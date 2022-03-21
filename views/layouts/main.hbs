@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/css/4155.css' />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <nav>
+        <div id='login-banner'>
+          {{#if username}}
+            <p>Welcome, {{ username }}!</p>
+          {{ else }}
+            <p>Login</p>
+            <p>Signup</p>
+          {{/if}}
+        </div>
+        <div id='nav-banner'>
+          <div class='flex'>
+            <img src='/img/charlotte.png' id='icon'/>
+            <h1>ResearchMyProfessor</h1>
+          </div>
+          <div class='flex right'>
+            <p>Home</p>
+            <p>Search Research</p>
+            <p>Campus Map</p>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      {{{ body }}}
+    </main>
+
+    <footer>
+      <div class='flex center'>
+        <img src='/img/copyright.png' class='footer-icon invert'/>
+        <p class='squished'>2022</p>
+      </div>
+      <div class='flex center space-around'>
+        <p class='squished'>UNCC Website</p>
+        <p class='squished'>Contact Us</p>
+        <div class='flex space-around'>
+          <img src='/img/facebook.png' class='footer-icon'/>
+          <img src='/img/twitter.png' class='footer-icon' />
+          <img src='/img/instagram.png' class='footer-icon' />
+
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
