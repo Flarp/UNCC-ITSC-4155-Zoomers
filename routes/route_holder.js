@@ -22,5 +22,7 @@ mainRouter.get("/search", mainController.getSearch);
 //GET /map --> Map of campus research
 mainRouter.get("/map", mainController.getMap);
 
+mainRouter.post("/login", mainController.login)
+
 //Provide the router to the app.js file
 module.exports = mainRouter;

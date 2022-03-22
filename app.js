@@ -32,19 +32,6 @@ app.set('views', './views')
 //Setup main routes of application, link to main routes
 app.use("/", mainRoutes);
 
-app.post('/login', async (req, res) => {
-  const user = await User.findOne({ username: req.body.username })
-  if (!user) {
-    console.log('bro what')
-  } else {
-    if (await bcrypt.compare(user.password, req.body.password)) {
-      console.log('logged in!')
-    } else {
-      console.log('bro, you stink!')
-    }
-  }
-})
-
 mongoose.connect('mongodb://localhost:27017/researchmyprofessor').then(_ => {
   app.listen(3000)
 })
