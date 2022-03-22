@@ -1,3 +1,10 @@
+/*
+    ITSC 4155 - Group 3: "The Zoomers"
+    ResearchMyProfessor application for 4155 Software Capstone project.
+    Date: March 22nd, 2022
+
+*/
+
 const express =  require('express')
 const hbs = require('express-handlebars')
 const mongoose = require('mongoose')
@@ -6,6 +13,7 @@ const bcrypt = require('bcrypt')
 const SALT_ROUNDS = 10
 
 const { User } = require('./model/model.js')
+const mainRoutes = require("./routes/route_holder");
 
 const instance = hbs.create({
   extname: '.hbs',
@@ -16,13 +24,13 @@ const app = express()
 
 app.use(express.static('public'))
 app.engine('hbs', instance.engine)
+const host = "localhost";
+let port = 3000;
 app.set('view engine', 'hbs')
 app.set('views', './views')
 
-app.get('/', (req, res) => {
-  //console.log(instance)
-  res.render('index', {username: 'piss'})
-})
+//Setup main routes of application, link to main routes
+app.use("/", mainRoutes);
 
 app.post('/login', async (req, res) => {
   const user = await User.findOne({ username: req.body.username })
