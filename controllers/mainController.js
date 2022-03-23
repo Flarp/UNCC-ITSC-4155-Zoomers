@@ -15,11 +15,6 @@ exports.getContact = (req, res) => {
     res.render("contact");
 }
 
-//Get /search search research page
-exports.getSearch = (req, res) => {
-    res.render("search");
-}
-
 //Get /map campus map page
 exports.getMap = (req, res) => {
     res.render("campusMap");
@@ -36,4 +31,4 @@ exports.login = async (req, res) => {
       console.log('bro, you stink!')
     }
   }
-})
+}

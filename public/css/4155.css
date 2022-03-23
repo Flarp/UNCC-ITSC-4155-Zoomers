@@ -49,6 +49,16 @@ main {
   align-items: flex-end;
 }
 
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link:hover {
+  font-style: italic;
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
 }

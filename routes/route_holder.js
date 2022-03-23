@@ -16,9 +16,6 @@ mainRouter.get("/", mainController.index);
 //GET /contact --> Contact Page of website
 mainRouter.get("/contact", mainController.getContact);
 
-//GET /search --> Search research page of website
-mainRouter.get("/search", mainController.getSearch);
-
 //GET /map --> Map of campus research
 mainRouter.get("/map", mainController.getMap);
 
