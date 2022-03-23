@@ -15,19 +15,19 @@
           {{#if username}}
             <p>Welcome, {{ username }}!</p>
           {{ else }}
-            <p>Login</p>
+            <p><a href="/login" class="nav-link">Login</a></p>
             <p>Signup</p>
           {{/if}}
         </div>
         <div id='nav-banner'>
           <div class='flex'>
-            <img src='/img/charlotte.png' id='icon'/>
-            <h1>ResearchMyProfessor</h1>
+            <a href="/" class="nav-link"><img src='/img/charlotte.png' id='icon'/></a>
+            <h1><a href="/" class="nav-link">ResearchMyProfessor</a></h1>
           </div>
           <div class='flex right'>
-            <p>Home</p>
-            <p>Search Research</p>
-            <p>Campus Map</p>
+            <p><a href="/" class="nav-link">Home</a></p>
+            <p><a href="/search" class="nav-link">Search Research</a></p>
+            <p><a href="/map" class="nav-link">Campus Map</a></p>
           </div>
         </div>
       </nav>
@@ -43,12 +43,12 @@
         <p class='squished'>2022</p>
       </div>
       <div class='flex center space-around'>
-        <p class='squished'>UNCC Website</p>
-        <p class='squished'>Contact Us</p>
+        <p class='squished'><a href="https://www.charlotte.edu/" class="nav-link">UNCC Website</a></p>
+        <p class='squished'><a href="/contact" class="nav-link">Contact Us</a></p>
         <div class='flex space-around'>
-          <img src='/img/facebook.png' class='footer-icon'/>
-          <img src='/img/twitter.png' class='footer-icon' />
-          <img src='/img/instagram.png' class='footer-icon' />
+          <a href="https://www.facebook.com/UNCCharlotte/"><img src='/img/facebook.png' class='footer-icon'/></a>
+          <a href="https://twitter.com/unccharlotte"><img src='/img/twitter.png' class='footer-icon' /></a>
+          <a href="https://www.instagram.com/unccharlotte/"><img src='/img/instagram.png' class='footer-icon' /></a>
 
         </div>
       </div>

@@ -13,6 +13,7 @@ const SALT_ROUNDS = 10
 
 const { User } = require('./model/model.js')
 const mainRoutes = require("./routes/route_holder");
+const searchRoutes = require("./routes/searchRoutes");
 
 const instance = hbs.create({
   extname: '.hbs',
@@ -34,6 +35,9 @@ app.set('views', './views')
 
 //Setup main routes of application, link to main routes
 app.use("/", mainRoutes);
+
+//Setup search routes of application, link to search routes
+app.use("/search", searchRoutes);
 
 mongoose.connect('mongodb://localhost:27017/researchmyprofessor').then(_ => {
   app.listen(3000)

@@ -45,3 +45,13 @@
 .text-justify {
   text-align: justify;
 }
+
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link:hover {
+  font-style: italic;
+  cursor: pointer;
+}

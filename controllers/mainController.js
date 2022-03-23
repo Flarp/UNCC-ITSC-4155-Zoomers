@@ -18,6 +18,7 @@ exports.getContact = (req, res) => {
     res.render("contact");
 }
 
+<<<<<<< HEAD
 //Get /search search research page
 exports.getSearch = (req, res) => {
     res.render("search");
@@ -27,6 +28,8 @@ exports.getLogin = (req, res) => {
   res.render("login")
 }
 
+=======
+>>>>>>> 90563b9c623a9abcc5efdbc143fb03e00714b264
 //Get /map campus map page
 exports.getMap = (req, res) => {
     res.render("campusMap");
