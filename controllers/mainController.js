@@ -7,6 +7,8 @@
 
 //Get / index page
 exports.index = (req, res) => {
+    //Scrape research news and research funding information to display on home page
+
     res.render("index");
 };
 
