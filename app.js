@@ -8,7 +8,6 @@
 const express =  require('express')
 const hbs = require('express-handlebars')
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
 
 const SALT_ROUNDS = 10
 
@@ -24,6 +23,10 @@ const instance = hbs.create({
 const app = express()
 
 app.use(express.static('public'))
+app.use(express.urlencoded({
+  extended: true
+}))
+
 app.engine('hbs', instance.engine)
 const host = "localhost";
 let port = 3000;

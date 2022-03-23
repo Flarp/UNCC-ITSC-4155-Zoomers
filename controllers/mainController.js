@@ -5,6 +5,9 @@
 
 */
 
+const { User } = require('../model/model.js')
+const bcrypt = require('bcrypt')
+
 //Get / index page
 exports.index = (req, res) => {
     //Scrape research news and research funding information to display on home page
@@ -17,6 +20,18 @@ exports.getContact = (req, res) => {
     res.render("contact");
 }
 
+<<<<<<< HEAD
+//Get /search search research page
+exports.getSearch = (req, res) => {
+    res.render("search");
+}
+
+exports.getLogin = (req, res) => {
+  res.render("login")
+}
+
+=======
+>>>>>>> 90563b9c623a9abcc5efdbc143fb03e00714b264
 //Get /map campus map page
 exports.getMap = (req, res) => {
     res.render("campusMap");
@@ -27,7 +42,8 @@ exports.login = async (req, res) => {
   if (!user) {
     console.log('bro what')
   } else {
-    if (await bcrypt.compare(user.password, req.body.password)) {
+    console.log()
+    if (await bcrypt.compare(req.body.password, user.password)) {
       console.log('logged in!')
     } else {
       console.log('bro, you stink!')
