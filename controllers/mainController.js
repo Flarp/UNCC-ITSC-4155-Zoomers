@@ -5,6 +5,9 @@
 
 */
 
+const { User } = require('../model/model.js')
+const bcrypt = require('bcrypt')
+
 //Get / index page
 exports.index = (req, res) => {
     res.render("index");
@@ -20,6 +23,10 @@ exports.getSearch = (req, res) => {
     res.render("search");
 }
 
+exports.getLogin = (req, res) => {
+  res.render("login")
+}
+
 //Get /map campus map page
 exports.getMap = (req, res) => {
     res.render("campusMap");
@@ -30,10 +37,11 @@ exports.login = async (req, res) => {
   if (!user) {
     console.log('bro what')
   } else {
-    if (await bcrypt.compare(user.password, req.body.password)) {
+    console.log()
+    if (await bcrypt.compare(req.body.password, user.password)) {
       console.log('logged in!')
     } else {
       console.log('bro, you stink!')
     }
   }
-})
+}

@@ -1,49 +1,56 @@
 {{!
-    
+
     ITSC 4155 - Group 3: "The Zoomers"
     Main page content for the index view. Display research headlines, grant information, and about us portion here.
     Date: March 22nd, 2022
 
 --}}
 
-<div id="asideNewsContainer">
-    <h2>Research News</h2>
-    <hr class="headerSeperator">
+<div class='flex h-center'>
+  <div id="home-grid" class='width-80'>
+  <div id="asideNewsContainer">
+      <h2>Research News</h2>
+      <hr class="headerSeperator">
 
-    <div class="headlineItem">
-        <img src="/img/canvas.png" class="headlineItemImage" width="105" height="105" />
-        <p>Research Headline for item N</p>
-    </div>
-    
-    <hr class="headerSeperator">
+      <div class="headlineItem">
+          <img src="/img/canvas.png" class="headlineItemImage" width="105" height="105" />
+          <p>Research Headline for item N</p>
+      </div>
 
-    <div class="headlineItem">
-        <img src="/img/canvas.png" class="headlineItemImage" width="105" height="105" />
-        <p>Research Headline for item N</p>
-    </div>
+      <hr class="headerSeperator">
 
-    <hr class="headerSeperator">
+      <div class="headlineItem">
+          <img src="/img/canvas.png" class="headlineItemImage" width="105" height="105" />
+          <p>Research Headline for item N</p>
+      </div>
 
-    <div class="headlineItem">
-        <img src="/img/canvas.png" class="headlineItemImage" width="105" height="105" />
-        <p>Research Headline for item N</p>
-    </div>
+      <hr class="headerSeperator">
 
-    <hr class="headerSeperator">
-</div>
+      <div class="headlineItem">
+          <img src="/img/canvas.png" class="headlineItemImage" width="105" height="105" />
+          <p>Research Headline for item N</p>
+      </div>
 
-<div id="aboutResearchContainer">
-    <h2>Welcome to ResearchMyProfessor</h2>
-    <hr class="headerSeperator">
+      <hr class="headerSeperator">
+  </div>
 
-    <div id="aboutResearchMyProf">
-        <img src="/img/homePageUNCC.png" id="welcomeImage" width="760" height="300" />
-        <br>
-        <h3 id="aboutHeader">About ResearchMyProfessor</h3>
-        <p id="aboutDescription">ResearchMyProfessor is a public website where students and industry professionals can locate specific research done at the University of North Carolina at Charlotte. By using this website, students can be exposed to the different kinds of academic research occurring at the college. By providing more exposure to research, we aim to help improve research visability between professors and students. The website can also connect industry professionals seeking advice or specific research in academia. <br><br>  Click on the "Search Research" link to search for UNCC related research. Click the "Campus Map" link to see where specific research occurs on campus. Click on the "User Profile" link to view information related to your account.</p>
-    </div>
-</div>
+  <div id="aboutResearchContainer">
+      <h2>Welcome to ResearchMyProfessor</h2>
+      <hr class="headerSeperator">
 
-<div id="grantBreakdown">
-    {{! Research funding breakdown would go here, could we scrape info for CCI off of this resource and visualize it? https://airtable.com/shrjq13IFO6hcVA5o/tbl2SalXwigsn5xJz?backgroundColor=cyan&viewControls=on ?--}}
+      <div id="aboutResearchMyProf">
+          <img src="/img/homePageUNCC.png" id="welcomeImage" width="760" height="300" />
+          <br>
+          <h3 id="aboutHeader">About ResearchMyProfessor</h3>
+          <div class='flex h-center text-justify width-100'>
+            <p id="aboutDescription">ResearchMyProfessor is a public website where students and industry professionals can locate specific research done at the University of North Carolina at Charlotte. By using this website, students can be exposed to the different kinds of academic research occurring at the college. By providing more exposure to research, we aim to help improve research visability between professors and students. The website can also connect industry professionals seeking advice or specific research in academia. <br><br>  Click on the "Search Research" link to search for UNCC related research. Click the "Campus Map" link to see where specific research occurs on campus. Click on the "User Profile" link to view information related to your account.</p>
+          </div>
+      </div>
+  </div>
+
+  <div id="grantBreakdown">
+      {{! Research funding breakdown would go here, could we scrape info for CCI off of this resource and visualize it? https://airtable.com/shrjq13IFO6hcVA5o/tbl2SalXwigsn5xJz?backgroundColor=cyan&viewControls=on ?--}}
+  </div>
+
+  </div>
 </div>

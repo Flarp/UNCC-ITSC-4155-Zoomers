@@ -1,0 +1,47 @@
+.flex {
+  display: flex;
+}
+
+.invert {
+  filter: invert(1)
+}
+
+.center {
+  align-items: center;
+}
+
+.h-center {
+  justify-content: center;
+}
+
+.space-around {
+  justify-content: space-around
+}
+
+.footer-icon {
+  width: 2vw;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+}
+
+.squished {
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding-right: 1em;
+  font-size: 0.75em;
+}
+
+
+.width-80 {
+  width: 80%;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.text-justify {
+  text-align: justify;
+}

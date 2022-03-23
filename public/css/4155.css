@@ -1,41 +1,12 @@
-body {
-  font-family: Roboto;
-  margin: 0em;
-  background-color: #E1E1E1;
-}
-
-nav {
-  background-color: #004525;
-  height: 23%;
-  width: 100%;
-  color: white;
-}
-
-#login-banner {
-  background-color: #817032;
-  margin-top: 0em;
-  height: 3%;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-#login-banner > p {
-  padding-left: 0.5em;
-  padding-right: 1em;
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-}
+@import "vars.css";
+@import "layout.css";
+@import "helpers.css";
 
 .right > p {
   padding-left: 0.5em;
   padding-right: 1em;
   margin-top: 0.25em;
   margin-bottom: 1em;
-}
-
-main {
-  margin: 0.5em;
 }
 
 #icon {
@@ -49,48 +20,35 @@ main {
   align-items: flex-end;
 }
 
-.flex {
-  display: flex;
-}
-
-.invert {
-  filter: invert(1)
-}
-
-.center {
-  align-items: center;
-}
-
-.space-around {
-  justify-content: space-around
-}
-
 h1 {
   font-family: Roboto Thin;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  background-color: #222222;
+#home-grid {
+  display: grid;
+  grid-template-areas:
+    "news banner"
+    "news banner"
+    "news banner"
+    "breakdown breakdown"
+    "breakdown breakdown";
+  grid-template-columns: 2fr 3fr;
+  justify-items: center;
+}
+
+#home-grid > div {
+  background-color: var(--rmp-green);
+  padding: 10px;
   color: white;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.footer-icon {
-  width: 2vw;
-  padding-left: 0.5vw;
-  padding-right: 0.5vw;
-  padding-top: 0.5vh;
-  padding-bottom: 0.5vh;
+h2 {
+  font-family: Roboto Light;
+  text-align: center;
 }
 
-.squished {
-  margin-top: 0em;
-  margin-bottom: 0em;
-  padding-right: 1em;
-  font-size: 0.75em;
+hr {
+  height: 7px;
+  color: var(--rmp-gold);
+  background-color: var(--rmp-gold);
 }

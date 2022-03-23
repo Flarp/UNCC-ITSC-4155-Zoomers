@@ -1,0 +1,46 @@
+@import "vars.css";
+@import "helpers.css";
+
+body {
+  font-family: Roboto;
+  margin: 0em;
+  background-color: var(--rmp-gray);
+}
+
+nav {
+  background-color: var(--rmp-green);
+  height: 23%;
+  width: 100%;
+  color: white;
+}
+
+main {
+  margin: 0.5em;
+}
+
+footer {
+  position: sticky;
+  bottom: 0;
+  background-color: var(--rmp-gray);
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#login-banner {
+  background-color: var(--rmp-gold);
+  margin-top: 0em;
+  height: 3%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#login-banner > p {
+  padding-left: 0.5em;
+  padding-right: 1em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
