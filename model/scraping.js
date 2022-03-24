@@ -42,7 +42,6 @@ exports.getResearchHeadlines = async function() {
 
         //Grabbing Image source from the HTML body
         let imageNodeList = domResponse.window.document.querySelectorAll(".article-image > img");
-
         let imageSrcInformation = Array.from(imageNodeList);
         const imageSrc = [];
 
@@ -60,6 +59,8 @@ exports.getResearchHeadlines = async function() {
         //PROBLEM!: The /n character is being grabbed as well... maybe some sort of splice is needed...
         //We are only needing 3, change i to retrieve more teasers... (Not using all the data).
         for (let i = 0; i < 3; i++) {
+            //Remove all the newLine characters before pushing it to the data array
+            teaserInformation[i].textContent = teaserInformation[i].textContent.trim();
             teaserText.push(teaserInformation[i].textContent);
         }
         //console.log(teaserText);

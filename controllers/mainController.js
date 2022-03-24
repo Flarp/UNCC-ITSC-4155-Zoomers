@@ -19,7 +19,7 @@ exports.index = (req, res) => {
 
     //Consume the promise returned from the async function... retrieve news information object
     scrapeNewsPromise.then(newsDataArray => {
-      console.log(newsDataArray);
+      //console.log(newsDataArray);
       res.render("index", {newsDataArray});
     }).catch(error => { //Error occurred when consuming promise?
       console.log("An error has occurred when retreiving the data object from the scrap.\n" + error.message);
