@@ -17,6 +17,7 @@
     "handlebars": "^4.7.5",
     "hbs": "^4.2.0",
     "jsdom": "^19.0.0",
-    "mongoose": "^6.2.7"
+    "mongoose": "^6.2.7",
+    "nodemon": "^2.0.15"
   }
 }
