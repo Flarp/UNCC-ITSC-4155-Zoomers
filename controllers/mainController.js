@@ -32,6 +32,14 @@ exports.getContact = (req, res) => {
     res.render("contact");
 }
 
+<<<<<<< HEAD
+//Get /search search research page
+exports.getSearch = (req, res) => {
+    res.render("search");
+}
+
+=======
+>>>>>>> 5ae2b72269a88b2b85c4dd6b030f608363a090ac
 exports.getLogin = (req, res) => {
   res.render("login")
 }
