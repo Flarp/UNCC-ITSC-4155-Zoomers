@@ -6,11 +6,13 @@
 */
 
 const { User } = require('../model/model.js')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const scrapingFunctions = require("../model/scraping");
 
 //Get / index page
 exports.index = (req, res) => {
     //Scrape research news and research funding information to display on home page
+    scrapingFunctions.getResearchHeadlines();
 
     res.render("index");
 };
@@ -20,18 +22,10 @@ exports.getContact = (req, res) => {
     res.render("contact");
 }
 
-<<<<<<< HEAD
-//Get /search search research page
-exports.getSearch = (req, res) => {
-    res.render("search");
-}
-
 exports.getLogin = (req, res) => {
   res.render("login")
 }
 
-=======
->>>>>>> 90563b9c623a9abcc5efdbc143fb03e00714b264
 //Get /map campus map page
 exports.getMap = (req, res) => {
     res.render("campusMap");
