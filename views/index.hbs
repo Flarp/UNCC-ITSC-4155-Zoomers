@@ -12,26 +12,17 @@
       <h2>Research News</h2>
       <hr class="headerSeperator">
 
-      <div class="headlineItem">
-          <img src={{newsDataObject.imageInfo}} class="headlineItemImage" width="170" height="170" />
-          <p>Research Headline for item N</p>
-      </div>
+    <!-- Get the array of objects (Each object holds an article w/ data). For each object in the array... Access the keys of object directly! -->
+    {{#each newsDataArray}}
+        <div class="headlineItem">
+            <img src={{imageInfo}} class="headlineItemImage" width="194" height="110" />
+            <h3 id="articleTitle">{{headerInfo}} <br> {{dateInfo}}</h3>
+            <p id="articleTeaser">{{teaserInfo}}</p>>
+        </div>
+    {{/each}}
 
       <hr class="headerSeperator">
 
-      <div class="headlineItem">
-          <img src="/img/canvas.png" class="headlineItemImage" width="105" height="105" />
-          <p>Research Headline for item N</p>
-      </div>
-
-      <hr class="headerSeperator">
-
-      <div class="headlineItem">
-          <img src="/img/canvas.png" class="headlineItemImage" width="105" height="105" />
-          <p>Research Headline for item N</p>
-      </div>
-
-      <hr class="headerSeperator">
   </div>
 
   <div id="aboutResearchContainer">

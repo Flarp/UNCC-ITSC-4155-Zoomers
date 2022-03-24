@@ -10,6 +10,7 @@ const { header } = require("express/lib/request");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
+//PROBLEM: What if the article is posted without an image? This has occurred twice in the last 3 years, and one of those occurrences happened today.
 exports.getResearchHeadlines = async function() {
     try {
 
@@ -41,6 +42,7 @@ exports.getResearchHeadlines = async function() {
 
         //Grabbing Image source from the HTML body
         let imageNodeList = domResponse.window.document.querySelectorAll(".article-image > img");
+
         let imageSrcInformation = Array.from(imageNodeList);
         const imageSrc = [];
 
@@ -81,14 +83,32 @@ exports.getResearchHeadlines = async function() {
         //console.log(absoluteLinks);
         
         //Create an object of the arrays where the arrays hold all of the gathered information
-        let researchNewsInformation = {
-            headerInfo: headerText,
-            dateInfo: dateText,
-            imageInfo: imageSrc,
-            teaserInfo: teaserText,
-            linkInfo: absoluteLinks
+        let researchNewsInformation = [
+            {
+                headerInfo: headerText[0],
+                dateInfo: dateText[0],
+                imageInfo: imageSrc[0],
+                teaserInfo: teaserText[0],
+                linkInfo: absoluteLinks[0]
+            },
 
-        };
+            {
+                headerInfo: headerText[1],
+                dateInfo: dateText[1],
+                imageInfo: "https://charlotteaxios-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/12/Agenda-Alumni-Cover-Image.jpg.webp",
+                teaserInfo: teaserText[1],
+                linkInfo: absoluteLinks[1]
+            },
+
+            {
+                headerInfo: headerText[2],
+                dateInfo: dateText[2],
+                imageInfo: imageSrc[1],
+                teaserInfo: teaserText[2],
+                linkInfo: absoluteLinks[2]
+            },
+            
+        ];
 
         //Return the researchNewsInformation object back to the controller to use!
         return researchNewsInformation;
