@@ -9,13 +9,15 @@
   "author": "Zoomers",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "express": "^4.17.3",
     "express-handlebars": "^4.0.2",
     "form-data": "^4.0.0",
     "handlebars": "^4.7.5",
     "hbs": "^4.2.0",
+    "jsdom": "^19.0.0",
     "mongoose": "^6.2.7",
-    "node-fetch": "^3.2.3"
+    "nodemon": "^2.0.15"
   }
 }

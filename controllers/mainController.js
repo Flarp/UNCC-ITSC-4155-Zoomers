@@ -6,11 +6,25 @@
 */
 
 const { User } = require('../model/model.js')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const scrapingFunctions = require("../model/scraping");
 
 //Get / index page
 exports.index = (req, res) => {
-    res.render("index");
+    //Retrieve the async function from the scraper function.
+    const executeScrape = scrapingFunctions.getResearchHeadlines;
+
+    //Execute the async function and return the promise to the 
+    const scrapeNewsPromise = executeScrape();
+
+    //Consume the promise returned from the async function... retrieve news information object
+    scrapeNewsPromise.then(newsDataArray => {
+      console.log(newsDataArray);
+      res.render("index", {newsDataArray});
+    }).catch(error => { //Error occurred when consuming promise?
+      console.log("An error has occurred when retreiving the data object from the scrap.\n" + error.message);
+    });
+
 };
 
 //Get /contact contact page
@@ -18,11 +32,14 @@ exports.getContact = (req, res) => {
     res.render("contact");
 }
 
+<<<<<<< HEAD
 //Get /search search research page
 exports.getSearch = (req, res) => {
     res.render("search");
 }
 
+=======
+>>>>>>> 5ae2b72269a88b2b85c4dd6b030f608363a090ac
 exports.getLogin = (req, res) => {
   res.render("login")
 }

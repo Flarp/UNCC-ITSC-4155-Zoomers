@@ -21,7 +21,7 @@ main {
 footer {
   position: sticky;
   bottom: 0;
-  background-color: var(--rmp-gray);
+  background-color: var(--rmp-dark);
   color: white;
   width: 100%;
   display: flex;
