@@ -51,6 +51,7 @@ h2 {
 
 hr {
   height: 7px;
+  border: 1px black solid;
   color: var(--rmp-gold);
   background-color: var(--rmp-gold);
 }
@@ -64,9 +65,13 @@ hr {
   margin-left: 2%
 }
 
-.headlineItemImage {
+.imageCenter {
   margin-left: auto;
   margin-right: auto;
   width: 50;
   display: block;
+}
+
+.headerTitle {
+  text-decoration: underline;
 }

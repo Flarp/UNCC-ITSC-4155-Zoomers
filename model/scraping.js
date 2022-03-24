@@ -10,6 +10,7 @@ const { header } = require("express/lib/request");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
+//Function for scraping news headlines from UNCC Domain
 //PROBLEM: What if the article is posted without an image? This has occurred twice in the last 3 years, and one of those occurrences happened today.
 exports.getResearchHeadlines = async function() {
     try {
