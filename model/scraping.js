@@ -20,7 +20,7 @@ exports.getResearchHeadlines = async function() {
         //Grabbing headers from the html body
         let headerNodeList = domResponse.window.document.querySelectorAll(".article-title > a");
         let anchorInformation = Array.from(headerNodeList);
-        //const headerText = [];
+        const headerText = [];
 
         //We are only needing 3, change i to retreive more headers... (Not using all data).
         for(let i = 0; i < 3; i++) {
@@ -53,14 +53,14 @@ exports.getResearchHeadlines = async function() {
         //Grabbing article teaser (exceprt) from the HTML body
         let teaserNodeList = domResponse.window.document.querySelectorAll(".article-teaser");
         let teaserInformation = Array.from(teaserNodeList);
-        let teaserInfo = [];
+        let teaserText = [];
 
         //PROBLEM!: The /n character is being grabbed as well... maybe some sort of splice is needed...
         //We are only needing 3, change i to retrieve more teasers... (Not using all the data).
         for (let i = 0; i < 3; i++) {
-            teaserInfo.push(teaserInformation[i].textContent);
+            teaserText.push(teaserInformation[i].textContent);
         }
-        //console.log(teaserInfo);
+        //console.log(teaserText);
 
         //Grabbing article link (To UNCC domain) from the HTML body
         let linkNodeList = domResponse.window.document.querySelectorAll(".article-title > a");
@@ -79,6 +79,19 @@ exports.getResearchHeadlines = async function() {
         });
 
         //console.log(absoluteLinks);
+        
+        //Create an object of the arrays where the arrays hold all of the gathered information
+        let researchNewsInformation = {
+            headerInfo: headerText,
+            dateInfo: dateText,
+            imageInfo: imageSrc,
+            teaserInfo: teaserText,
+            linkInfo: absoluteLinks
+
+        };
+
+        //Return the researchNewsInformation object back to the controller to use!
+        return researchNewsInformation;
 
     } catch(error) {
         console.log("Error when scraping research headline information.")
