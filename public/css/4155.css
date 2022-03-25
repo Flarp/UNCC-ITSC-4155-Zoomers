@@ -51,6 +51,27 @@ h2 {
 
 hr {
   height: 7px;
+  border: 1px black solid;
   color: var(--rmp-gold);
   background-color: var(--rmp-gold);
+}
+
+
+#asideNewsContainer {
+  margin-right: 2%;
+}
+
+#aboutResearchContainer {
+  margin-left: 2%
+}
+
+.imageCenter {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50;
+  display: block;
+}
+
+.headerTitle {
+  text-decoration: underline;
 }

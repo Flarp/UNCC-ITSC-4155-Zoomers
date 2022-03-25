@@ -11,10 +11,20 @@ const scrapingFunctions = require("../model/scraping");
 
 //Get / index page
 exports.index = (req, res) => {
-    //Scrape research news and research funding information to display on home page
-    scrapingFunctions.getResearchHeadlines();
+    //Retrieve the async function from the scraper function.
+    const executeScrape = scrapingFunctions.getResearchHeadlines;
 
-    res.render("index");
+    //Execute the async function and return the promise to the 
+    const scrapeNewsPromise = executeScrape();
+
+    //Consume the promise returned from the async function... retrieve news information object
+    scrapeNewsPromise.then(newsDataArray => {
+      //console.log(newsDataArray);
+      res.render("index", {newsDataArray});
+    }).catch(error => { //Error occurred when consuming promise?
+      console.log("An error has occurred when retreiving the data object from the scrap.\n" + error.message);
+    });
+
 };
 
 //Get /contact contact page
