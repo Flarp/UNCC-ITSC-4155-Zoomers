@@ -3,55 +3,90 @@
 @import "helpers.css";
 
 .image {
-    position: relative;
-    left: 80px;
-    color: #47525E;
-    font-weight: bold;
-    top: 20px;
+  position: relative;
+  left: 80px;
+  color: #47525e;
+  font-weight: bold;
+  top: 20px;
 }
 
 .headlineItem {
-    position: relative;
-    font-weight: bold;
-    font-family: Roboto;
-    color: #47525E;
-    left: 275px;
-    top: -105px;
+  position: relative;
+  font-weight: bold;
+  font-family: Roboto;
+  color: #47525e;
+  left: 275px;
+  top: -105px;
+  width: 70%;
 }
 
 .button {
-    background-color: #004525;
-    color: #FFFFFF;
-    font-weight: bold;
-    font-size: 15px;
-    width: 143px;
-    height: 30px;
+  background-color: #004525;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 15px;
+  width: 143px;
+  height: 30px;
 }
 
 .button1 {
-    position: relative;
-    left: 250px;
-    top: -70px;
+  position: relative;
+  left: 250px;
+  top: -70px;
 }
 
 .button2 {
-    position: relative;
-    left: 350px;
-    top: -70px;
+  position: relative;
+  left: 350px;
+  top: -70px;
 }
 
 .button3 {
-    position: relative;
-    left: 450px;
-    top: -70px;
+  position: relative;
+  left: 450px;
+  top: -70px;
 }
 
 .profDescrip {
-    position: relative;
-    font-weight: bold;
-    font-family: Roboto;
-    color: #47525E;
-    left: 275px;
-    top: -25px;
-    padding-right: 600px;
+  position: relative;
+  font-weight: bold;
+  font-family: Roboto;
+  color: #47525e;
+  left: 275px;
+  top: -25px;
+  padding-right: 600px;
+}
+
+.card {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px lightgray;
+}
+
+.card h3 {
+  margin-top: 2px;
+  margin-bottom: 0px;
+}
+
+.card h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: small;
+  font-style: italic;
+}
+
+.light-yellow {
+  background-color: palegoldenrod;
+}
+
+.light-green {
+    background-color: lightgreen;
+}
+
+.light-blue {
+    background-color: rgb(170, 221, 255);
 }

@@ -5,25 +5,25 @@
 
 */
 
-const express = require("express");
-const mainController = require("../controllers/mainController");
+const express = require("express")
+const mainController = require("../controllers/mainController")
 
-const mainRouter = express.Router();
+const mainRouter = express.Router()
 
 //GET / --> index page (Home Page) of website
-mainRouter.get("/", mainController.index);
+mainRouter.get("/", mainController.index)
 
 //GET /contact --> Contact Page of website
-mainRouter.get("/contact", mainController.getContact);
+mainRouter.get("/contact", mainController.getContact)
 
 //GET /map --> Map of campus research
-mainRouter.get("/map", mainController.getMap);
+mainRouter.get("/map", mainController.getMap)
 
 mainRouter.get("/login", mainController.getLogin)
 
 mainRouter.post("/login", mainController.login)
 
-//Provide the router to the app.js file
-module.exports = mainRouter;
+mainRouter.get("/professor/:profId", mainController.getProfProfile)
 
-mainRouter.get("/profProfile", mainController.getProfProfile)
+//Provide the router to the app.js file
+module.exports = mainRouter
