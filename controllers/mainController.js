@@ -41,11 +41,12 @@ exports.getMap = (req, res) => {
 
 exports.getSignup = (req, res) => {
   res.render("signup")
+  
 }
 
 exports.signup = async (req, res) => {
   //const user = await User.findOne({ username: req.body.username })
-  if (!user) {
+  if (password != rpassword) {
     console.log('bro what')
   } else {
     console.log()
