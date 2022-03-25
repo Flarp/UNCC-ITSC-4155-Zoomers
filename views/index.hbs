@@ -4,47 +4,117 @@
     Main page content for the index view. Display research headlines, grant information, and about us portion here.
     Date: March 22nd, 2022
 
---}}
+}}
 
-<div class='flex h-center'>
-  <div id="home-grid" class='width-80'>
-  <div id="asideNewsContainer">
+<div class="flex h-center">
+  <div id="home-grid" class="width-80">
+    <div id="asideNewsContainer">
       <h2>Research News</h2>
-      <hr class="headerSeperator">
+      <hr class="headerSeperator" />
 
-    <!-- Get the array of objects (Each object holds an article w/ data). For each object in the array... Access the keys of object directly! -->
-    {{#each newsDataArray}}
+      <!-- Get the array of objects (Each object holds an article w/ data). For each object in the array... Access the keys of object directly! -->
+      {{#each newsDataArray}}
         <div class="headlineItem">
-            <a href={{linkInfo}} class="nav-link"><img src={{imageInfo}} class="imageCenter" width="250" height="150" /></a>
-            <h3 class="headerTitle"><a href={{linkInfo}} class="nav-link">{{headerInfo}} : {{dateInfo}}</a></h3>
-            <p class="articleTeaser">{{teaserInfo}}</p>
+          <a href={{linkInfo}} class="nav-link"><img
+              src={{imageInfo}}
+              class="imageCenter"
+              width="250"
+              height="150"
+            /></a>
+          <h3 class="headerTitle"><a
+              href={{linkInfo}}
+              class="nav-link"
+            >{{headerInfo}} : {{dateInfo}}</a></h3>
+          <p class="articleTeaser">{{teaserInfo}}</p>
         </div>
-        <hr class="headerSeperator">
-    {{/each}}
+        <hr class="headerSeperator" />
+      {{/each}}
 
-  </div>
+    </div>
 
-  <div id="aboutResearchContainer">
+    <div id="aboutResearchContainer">
       <h2>Welcome to ResearchMyProfessor</h2>
-      <hr class="headerSeperator">
+      <hr class="headerSeperator" />
 
       <div id="aboutResearchMyProf">
-          <img src="/img/homePageUNCC.png" class="imageCenter" width="760" height="300" />
-          <br>
-          <h3 class="headerTitle">About ResearchMyProfessor</h3>
-          <div class='flex h-center text-justify width-100'>
-            <p id="aboutDescription">ResearchMyProfessor is a public website where students and industry professionals can locate specific research done at the University of North Carolina at Charlotte. By using this website, students can be exposed to the different kinds of academic research occurring at the college. By providing more exposure to research, we aim to help improve research visability between professors and students. The website can also connect industry professionals seeking advice or specific research in academia. <br><br>  Click on the "Search Research" link to search for UNCC related research. Click the "Campus Map" link to see where specific research occurs on campus. Click on the "User Profile" link to view information related to your account.</p>
-          </div>
+        <img
+          src="/img/homePageUNCC.png"
+          class="imageCenter"
+          width="760"
+          height="300"
+        />
+        <br />
+        <h3 class="headerTitle">About ResearchMyProfessor</h3>
+        <div class="flex h-center text-justify width-100">
+          <p id="aboutDescription">ResearchMyProfessor is a public website where
+            students and industry professionals can locate specific research
+            done at the University of North Carolina at Charlotte. By using this
+            website, students can be exposed to the different kinds of academic
+            research occurring at the college. By providing more exposure to
+            research, we aim to help improve research visability between
+            professors and students. The website can also connect industry
+            professionals seeking advice or specific research in academia.
+            <br /><br />
+            Click on the "Search Research" link to search for UNCC related
+            research. Click the "Campus Map" link to see where specific research
+            occurs on campus. Click on the "User Profile" link to view
+            information related to your account.</p>
+        </div>
       </div>
 
-      <div id="collegeLinks">
+    <div class="UNCCDepartments">
 
-      </div>
-  </div>
+        <div class="informationColumn">
+            <img src="https://www.charlotte.edu/sites/www.charlotte.edu/files/academics-bcob.jpg" width="250" height="150" class="deptImage" />
+            <p class="deptDesc">Belk College of Business<br><br>Generating vital talent for the greater Charlotte economy — the second largest banking center in the United States — and fresh insights through research for emerging companies across North Carolina.</p>
+        </div>
 
-  <div id="grantBreakdown">
+        <br>
+
+        <div class="informationColumn">
+            <img src="https://www.charlotte.edu/sites/www.charlotte.edu/files/academics-coaa.jpg" width="250" height="150" class="deptImage" />
+            <p class="deptDesc">College of Arts + Architecture<br><br>A diverse community of visionary thinkers, designers, and makers, who seek to create a more beautiful and just world through innovation, research and collaborative engagement.</p>
+        </div>
+
+        <br>
+
+        <div class="informationColumn">
+            <img src="https://www.charlotte.edu/sites/www.charlotte.edu/files/academics-ccoe.jpg" width="250" height="150" class="deptImage" />
+            <p class="deptDesc">Cato College of Education<br><br>Supporting North Carolina schools, teachers, superintendents and policy makers working to advance educational research, equity, excellence and engagement for all students.</p>
+        </div>
+
+        <br>
+
+        <div class="informationColumn">
+            <img src="https://www.charlotte.edu/sites/www.charlotte.edu/files/academics-cci.jpg" width="250" height="150" class="deptImage" />
+            <p class="deptDesc">College of Computing and Informatics<br><br>Fostering critical knowledge and talent to speed next-generation research and technological breakthroughs — Artificial Intelligence, Robotics, Big Data Analysis, Computer-Aided Education, Bioinformatics and Cybersecurity — for North Carolina.</p>
+        </div>
+
+        <br>
+
+        <div class="informationColumn">
+            <img src="https://www.charlotte.edu/sites/www.charlotte.edu/files/academics-chhs.jpg" width="250" height="150" class="deptImage" />
+            <p class="deptDesc">College of Health and Human Services<br><br>Translating clinical and public health research to improve patient outcomes, especially for vulnerable, underinsured and underserved communities.</p>
+        </div>
+
+        <br>
+
+        <div class="informationColumn">
+            <img src="https://www.charlotte.edu/sites/www.charlotte.edu/files/academics-coe.jpg" width="250" height="150" class="deptImage" />
+            <p class="deptDesc">The William States Lee College of Engineering<br><br>Among the top engineering programs in North Carolina, where ideas become reality through research, study, design, hands-on prototyping and often interdisciplinary collaboration with industry supporters.</p>
+        </div>
+
+        <br>
+
+        <div class="informationColumn">
+            <img src="	https://www.charlotte.edu/sites/www.charlotte.edu/files/academics-ids-2.jpg" width="250" height="150" class="deptImage" />
+            <p class="deptDesc">Interdisciplinary Studies<br><br>Where business meets computer science, biology meets the arts and history combines with engineering — integrative thinkers draw from multiple academic disciplines to lead North Carolina’s top roles in data science, business, law and healthcare.</p>
+        </div>
+
+
+    </div>
+    
+    <div id="grantBreakdown">
       {{! Research funding breakdown would go here, could we scrape info for CCI off of this resource and visualize it? https://airtable.com/shrjq13IFO6hcVA5o/tbl2SalXwigsn5xJz?backgroundColor=cyan&viewControls=on ?--}}
-  </div>
-
-  </div>
+    </div>
 </div>

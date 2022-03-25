@@ -5,46 +5,48 @@
 
 */
 
-const express =  require('express')
-const hbs = require('express-handlebars')
-const mongoose = require('mongoose')
+const express = require("express")
+const hbs = require("express-handlebars")
+const mongoose = require("mongoose")
 
 const SALT_ROUNDS = 10
 
-const { User } = require('./model/model.js')
-const mainRoutes = require("./routes/route_holder");
-const searchRoutes = require("./routes/searchRoutes");
+const { User } = require("./model/model.js")
+const mainRoutes = require("./routes/route_holder")
+const searchRoutes = require("./routes/searchRoutes")
 
 const instance = hbs.create({
-  extname: '.hbs',
-  partialsDir: __dirname + '/views/partials'
+  extname: ".hbs",
+  partialsDir: __dirname + "/views/partials",
 })
 
 const app = express()
-app.use(express.static('public'))
-app.use(express.urlencoded({
-  extended: true
-}))
+app.use(express.static("public"))
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+)
 
-app.engine('hbs', instance.engine)
-const host = "localhost";
-let port = 3000;
-app.set('view engine', 'hbs')
-app.set('views', './views')
+app.engine("hbs", instance.engine)
+const host = "localhost"
+let port = 3000
+app.set("view engine", "hbs")
+app.set("views", "./views")
 
 //Setup main routes of application, link to main routes
-app.use("/", mainRoutes);
+app.use("/", mainRoutes)
 
 //Setup search routes of application, link to search routes
-app.use("/search", searchRoutes);
+app.use("/search", searchRoutes)
 
 //mongoose.connect('mongodb://localhost:27017/researchmyprofessor').then(_ => {
 //  app.listen(3000)
 //})
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get("/", (req, res) => {
+  res.send("Hello World!")
 })
 
 app.listen(port, () => {
-  console.log('Example app listening on port ${port}')
+  console.log(`Example app listening on port ${port}`)
 })
