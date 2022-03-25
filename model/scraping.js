@@ -25,7 +25,7 @@ exports.getResearchHeadlines = async function() {
         const headerText = [];
 
         //We are only needing 3, change i to retreive more headers... (Not using all data).
-        for(let i = 0; i < 3; i++) {
+        for(let i = 0; i < 6; i++) {
             headerText.push(anchorInformation[i].textContent);
         }
         //console.log(headerText); 
@@ -36,7 +36,7 @@ exports.getResearchHeadlines = async function() {
         const dateText = [];
 
         //We are only needing 3, change i to retreive more dates... (Not using all data).
-        for(let i = 0; i < 3; i++) {
+        for(let i = 0; i < 6; i++) {
             dateText.push(dateSpanInformation[i].textContent);
         }
         //console.log(dateText);
@@ -47,7 +47,7 @@ exports.getResearchHeadlines = async function() {
         const imageSrc = [];
 
         //We are only needing 3, change i to retrieve more srcs... (Not using all the data).
-        for(let i = 0; i < 3; i++) {
+        for(let i = 0; i < 6; i++) {
             imageSrc.push(imageSrcInformation[i].getAttribute("src"));
         }
         //console.log(imageSrc);
@@ -59,7 +59,7 @@ exports.getResearchHeadlines = async function() {
 
         //PROBLEM!: The /n character is being grabbed as well... maybe some sort of splice is needed...
         //We are only needing 3, change i to retrieve more teasers... (Not using all the data).
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 6; i++) {
             //Remove all the newLine characters before pushing it to the data array
             teaserInformation[i].textContent = teaserInformation[i].textContent.trim();
             teaserText.push(teaserInformation[i].textContent);
@@ -73,7 +73,7 @@ exports.getResearchHeadlines = async function() {
         const absoluteLinks = [];
         
         //We are only needing 3, change i to retrieve more teasers... (Not using all the data). This retreives relative link. Expand to absolute
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 6; i++) {
             relativeLinks.push(linkInformation[i].getAttribute("href"));
         }
         
@@ -108,6 +108,22 @@ exports.getResearchHeadlines = async function() {
                 imageInfo: imageSrc[1],
                 teaserInfo: teaserText[2],
                 linkInfo: absoluteLinks[2]
+            },
+
+            {
+                headerInfo: headerText[3],
+                dateInfo: dateText[3],
+                imageInfo: imageSrc[2],
+                teaserInfo: teaserText[3],
+                linkInfo: absoluteLinks[3]
+            },
+
+            {
+                headerInfo: headerText[4],
+                dateInfo: dateText[4],
+                imageInfo: imageSrc[3],
+                teaserInfo: teaserText[4],
+                linkInfo: absoluteLinks[4]
             },
             
         ];
