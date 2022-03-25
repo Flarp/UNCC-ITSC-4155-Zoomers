@@ -1,0 +1,64 @@
+@import "vars.css";
+@import "layout.css";
+@import "helpers.css";
+
+/*
+.box {
+    background-color: white;
+    border: 2px solid black;
+    width: 400px;
+    padding: 10px;
+    margin-left: 400px;
+}
+*/
+.signup {
+    color: #004525;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.userText {
+    font-size: 11px;
+    margin-left: 500px;
+}
+
+.userButton {
+    border: 2px solid black;
+    padding: 8px 20px;
+    margin-left: 500px;
+}
+
+.signText {
+    font-size: 11px;
+    margin-left: 500px;
+}
+.rsignText {
+    font-size: 11px;
+    margin-left: 500px;
+}
+
+.passButton {
+    border: 2px solid black;
+    padding: 8px 20px;
+    margin-left: 500px;
+}
+.rpassButton {
+    border: 2px solid black;
+    padding: 8px 20px;
+    margin-left: 500px;
+}
+
+
+.signupButton{
+    border: solid #dfc56e;
+    background-color: #dfc56e;
+    padding: 8px 80px;
+    margin-left: 500px;
+}
+
+.extraText{
+    font-size: 11px;
+    color: black;
+    margin-left: 500px;
+}

@@ -20,8 +20,10 @@ mainRouter.get("/contact", mainController.getContact);
 mainRouter.get("/map", mainController.getMap);
 
 mainRouter.get("/login", mainController.getLogin)
+mainRouter.get("/signup", mainController.getSignup)
 
 mainRouter.post("/login", mainController.login)
+mainRouter.post("/signup", mainController.signup)
 
 //Provide the router to the app.js file
 module.exports = mainRouter;

@@ -32,13 +32,34 @@ exports.getContact = (req, res) => {
     res.render("contact");
 }
 
-exports.getLogin = (req, res) => {
-  res.render("login")
-}
 
 //Get /map campus map page
 exports.getMap = (req, res) => {
     res.render("campusMap");
+}
+
+
+exports.getSignup = (req, res) => {
+  res.render("signup")
+}
+
+exports.signup = async (req, res) => {
+  //const user = await User.findOne({ username: req.body.username })
+  if (!user) {
+    console.log('bro what')
+  } else {
+    console.log()
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      console.log('Your accouint is created!')
+    } else {
+      console.log('bro, you stink!')
+    }
+  }
+}
+
+
+exports.getLogin = (req, res) => {
+  res.render("login")
 }
 
 exports.login = async (req, res) => {
@@ -54,6 +75,7 @@ exports.login = async (req, res) => {
     }
   }
 }
+
 exports.getProfProfile = (req, res) => {
   res.render("profProfile");
 }
