@@ -44,3 +44,6 @@ exports.login = async (req, res) => {
     }
   }
 }
+exports.getProfProfile = (req, res) => {
+  res.render("profProfile");
+}
