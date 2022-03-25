@@ -40,13 +40,7 @@ app.use("/", mainRoutes)
 //Setup search routes of application, link to search routes
 app.use("/search", searchRoutes)
 
-//mongoose.connect('mongodb://localhost:27017/researchmyprofessor').then(_ => {
-//  app.listen(3000)
-//})
-app.get("/", (req, res) => {
-  res.send("Hello World!")
+mongoose.connect('mongodb://localhost:27017/researchmyprofessor').then(_ => {
+  app.listen(3000);
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
