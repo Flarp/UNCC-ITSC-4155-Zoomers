@@ -25,6 +25,12 @@ mainRouter.get("/signup", mainController.getSignup)
 mainRouter.post("/login", mainController.login)
 mainRouter.post("/signup", mainController.signup)
 
+mainRouter.get("/register", mainController.getRegister)
+
+//mainRouter.post("/register", mainController.register)
+
+//Provide the router to the app.js file
+module.exports = mainRouter;
 mainRouter.get("/professor/:profId", mainController.getProfProfile)
 
 //Provide the router to the app.js file

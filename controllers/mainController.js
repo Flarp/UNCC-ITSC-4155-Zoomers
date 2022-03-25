@@ -38,6 +38,10 @@ exports.getContact = (req, res) => {
 }
 
 
+exports.getRegister = (req, res) => {
+  res.render("register")
+}
+
 //Get /map campus map page
 exports.getMap = (req, res) => {
   res.render("campusMap")
