@@ -23,6 +23,10 @@ mainRouter.get("/login", mainController.getLogin)
 
 mainRouter.post("/login", mainController.login)
 
+mainRouter.get("/register", mainController.getRegister)
+
+//mainRouter.post("/register", mainController.register)
+
 //Provide the router to the app.js file
 module.exports = mainRouter;
 

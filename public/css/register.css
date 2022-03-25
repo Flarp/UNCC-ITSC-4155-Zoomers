@@ -1,0 +1,72 @@
+@import "vars.css";
+@import "layout.css";
+@import "helpers.css";
+
+.create {
+    position: relative;
+    color: #004525;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.firstText {
+    position: relative;
+    font-size: 11px;
+    margin-left: 500px;
+}
+
+.firstButton {
+    position: relative;
+    border: 2px solid black;
+    padding: 8px 20px;
+    margin-left: 500px;
+}
+
+.lastText {
+    position: relative;
+    font-size: 11px;
+    margin-left: 500px;
+}
+
+.lastButton {
+    position: relative;
+    border: 2px solid black;
+    padding: 8px 20px;
+    margin-left: 500px;
+}
+
+.userText {
+    font-size: 11px;
+    margin-left: 500px;
+}
+
+.userButton {
+    border: 2px solid black;
+    padding: 8px 20px;
+    margin-left: 500px;
+}
+
+.passText {
+    font-size: 11px;
+    margin-left: 500px;
+}
+
+.passButton {
+    border: 2px solid black;
+    padding: 8px 20px;
+    margin-left: 500px;
+}
+
+.submitButton{
+    border: solid #dfc56e;
+    background-color: #dfc56e;
+    padding: 8px 80px;
+    margin-left: 500px;
+}
+
+.extraText{
+    font-size: 11px;
+    color: black;
+    margin-left: 500px;
+}
