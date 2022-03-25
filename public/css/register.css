@@ -2,6 +2,11 @@
 @import "layout.css";
 @import "helpers.css";
 
+form {
+    margin: 0;
+    width: 250px;
+}
+
 .create {
     position: relative;
     color: #004525;
@@ -10,52 +15,19 @@
     margin-top: 60px;
 }
 
-.firstText {
-    position: relative;
-    font-size: 11px;
-    margin-left: 500px;
+#container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
-.firstButton {
-    position: relative;
-    border: 2px solid black;
-    padding: 8px 20px;
-    margin-left: 500px;
-}
-
-.lastText {
-    position: relative;
-    font-size: 11px;
-    margin-left: 500px;
-}
-
-.lastButton {
-    position: relative;
-    border: 2px solid black;
-    padding: 8px 20px;
-    margin-left: 500px;
-}
-
-.userText {
-    font-size: 11px;
-    margin-left: 500px;
-}
-
-.userButton {
-    border: 2px solid black;
-    padding: 8px 20px;
-    margin-left: 500px;
-}
-
-.passText {
-    font-size: 11px;
-    margin-left: 500px;
-}
-
-.passButton {
-    border: 2px solid black;
-    padding: 8px 20px;
-    margin-left: 500px;
+.registerItem {
+    margin-top: 3%;
+    
 }
 
 .submitButton{

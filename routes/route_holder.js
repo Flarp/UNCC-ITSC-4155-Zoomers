@@ -19,18 +19,19 @@ mainRouter.get("/contact", mainController.getContact)
 //GET /map --> Map of campus research
 mainRouter.get("/map", mainController.getMap)
 
+//GET /login --> Grab the login page
 mainRouter.get("/login", mainController.getLogin)
-mainRouter.get("/signup", mainController.getSignup)
 
-mainRouter.post("/login", mainController.login)
-mainRouter.post("/signup", mainController.signup)
+//Post /login --> Post the requested login from the user. Check their login against the database
+mainRouter.post("/login", mainController.checkLogin)
 
+//GET /register --> Grab the register page
 mainRouter.get("/register", mainController.getRegister)
 
-//mainRouter.post("/register", mainController.register)
+//Post /register --> Post the new register information to the server
+mainRouter.post("/register", mainController.createNewUser)
 
-//Provide the router to the app.js file
-module.exports = mainRouter;
+//Get /professor/:id --> Retrieve the profile of the professor
 mainRouter.get("/professor/:profId", mainController.getProfProfile)
 
 //Provide the router to the app.js file

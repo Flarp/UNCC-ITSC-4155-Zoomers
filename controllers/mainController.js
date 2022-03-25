@@ -5,7 +5,8 @@
 
 */
 
-const { User } = require("../model/model.js")
+const User = require("../model/model.js")
+const Professor = require("../model/professor.js")
 const bcrypt = require("bcrypt")
 const scrapingFunctions = require("../model/scraping")
 
@@ -42,72 +43,80 @@ exports.getRegister = (req, res) => {
   res.render("register")
 }
 
+exports.createNewUser = (req, res, next) => {
+
+    console.log('dos this part even run?')
+    
+    console.log(req.body);
+    //The new user will now be added to the model based on the information they pased in through the post request
+    let newUser = new User(req.body);
+
+    //Validate and save the user to the database. 
+    newUser.save().then(() => {
+      console.log(newUser);
+      console.log("Register Successful! Account Registered!");
+      res.redirect("/login");
+    }).catch(error => {
+      if(error.name === "ValidationError") {
+        //Validation failed, user did not proper input
+        console.log("User entered incorrect information when registering!")
+        return res.redirect("/register");
+      }
+  
+      if (error.code === 11000) {
+        //User did not provide a unique username
+        console.log("User did not provide a unique username!")
+        return res.redirect("/register");
+      }
+  
+      console.log("Server Error when registering user to website.")
+    });
+}
+
 //Get /map campus map page
 exports.getMap = (req, res) => {
   res.render("campusMap")
 }
 
-
-exports.getSignup = (req, res) => {
-  res.render("signup")
-  
-}
-
-exports.signup = async (req, res) => {
-  //const user = await User.findOne({ username: req.body.username })
-  if (password != rpassword) {
-    console.log('bro what')
-  } else {
-    console.log()
-    if (await bcrypt.compare(req.body.password, user.password)) {
-      console.log('Your accouint is created!')
-    } else {
-      console.log('bro, you stink!')
-    }
-  }
-}
-
-
+//Get /login render the login
 exports.getLogin = (req, res) => {
   res.render("login")
 }
 
-exports.login = async (req, res) => {
-  const user = await User.findOne({ username: req.body.username })
-  if (!user) {
-    console.log("bro what")
-  } else {
-    console.log()
-    if (await bcrypt.compare(req.body.password, user.password)) {
-      console.log("logged in!")
-    } else {
-      console.log("bro, you stink!")
+//Post /login --> Check the login credintials against the database
+exports.checkLogin = (req, res, next) => {
+  User.findOne({ username: req.body.username }).then(account => {
+    //If an account is found, then
+    if(account) {
+
+      //Check to see if the password of the found account matches the password stored for that account. Called the created method in the model. The compare is async. The result will be Boolean.
+      account.comparePassword(req.body.password).then(result => {
+          //If the result is true then the user is not capping and can login to their account. Otherwise the password was incorrect.
+          if(result) {
+              req.session.account = account._id;  //Store the account session id from the server into the browser cookie
+              res.redirect("/");
+              
+          } else { //Incorrect password entered by the user
+              console.log("Passwords did not match. Incorrect login");
+              res.redirect("/login");
+          }
+      }).catch(error => { //Error when comparing the passwords in the model
+        console.log("Error when comparing passwords");
+        next(error);
+      });
+    } else { //Incorrect email entered by the user
+      console.log("404: Email not found");
+      res.redirect("/login");
     }
-  }
+  }).catch(error => { //Error locating the user account in the database.
+    next(error);
+  });
 }
 
-exports.getProfProfile = (req, res) => {
-  console.log(req)
+exports.getProfProfile = async (req, res) => {
+  //console.log(req)
   const { profId } = req.params
-  const profData = {
-    name: "John Doe",
-    department: "Computer Science",
-    researchAreas: ["Human-Computer Interaction", "CSE"],
-    broadResearchAreas: ["Computer Science"],
-    homePage: "https://passlab.github.io/yanyh/",
-    email: "email@email.com",
-    classes: [
-      { dept: "College of Computing and Informatics", code: "ITSC 4155", name: "Software Engineering Projects" },
-    ],
-    reviews: [
-      {
-        userId: "1234",
-        userName: "asdf",
-        title: "Professor Review",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      },
-    ],
-  }
+  const profData = await Professor.findOne({ _id: profId }).lean()
 
   res.render("profProfile", { profData })
 }
