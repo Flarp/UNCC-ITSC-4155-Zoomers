@@ -25,3 +25,5 @@ mainRouter.post("/login", mainController.login)
 
 //Provide the router to the app.js file
 module.exports = mainRouter;
+
+mainRouter.get("/profProfile", mainController.getProfProfile)
