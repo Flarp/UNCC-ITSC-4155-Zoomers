@@ -14,7 +14,7 @@
         <div id='login-banner'>
           {{#if username}}
             <p>Welcome, {{ username }}!</p>
-            {{!--<p><a href="/signup" class="nav-link">Signup</a></p>--}}
+            <p><a href="/profile" class="nav-link">Profile</a></p>
           {{ else }}
             <p><a href="/login" class="nav-link">Login</a></p>
             <p><a href="/register" class="nav-link">Signup</a></p>
@@ -23,7 +23,9 @@
         <div id='nav-banner'>
           <div class='flex'>
             <a href="/" class="nav-link"><img src='/img/charlotte.png' id='icon'/></a>
-            <h1><a href="/" class="nav-link">ResearchMyProfessor</a></h1>
+            <div id="verticalAlign">
+              <h1><a href="/" class="websiteTitle">ResearchMyProfessor</a></h1>
+            </div>
           </div>
           <div class='flex right'>
             <p><a href="/" class="nav-link">Home</a></p>

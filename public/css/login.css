@@ -42,6 +42,12 @@
     padding: 8px 80px;
 }
 
+.submitButton:hover {
+    cursor: pointer;
+    background-color: #c5a94d;
+    border: solid #c5a94d;
+}
+
 .extraText{
     font-size: 11px;
     color: black;
