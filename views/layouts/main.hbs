@@ -37,6 +37,18 @@
     </header>
 
     <main>
+      {{#if successMessages }}
+        {{#each successMessages }}
+          <div class="flash-success"><p>{{ this }}</p></div>
+        {{/each}}
+      {{/if}}
+
+
+      {{#if errorMessages }}
+        {{#each errorMessages }}
+          <div class="flash-errors"><p>{{ this }}</p></div>
+        {{/each}}
+      {{/if}}
       {{{ body }}}
     </main>
 
