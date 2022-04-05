@@ -8,37 +8,39 @@ form {
 }
 
 .create {
-    position: relative;
     color: #004525;
     font-size: 25px;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
-#container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-
+.labelText {
+    font-size: 11px;
 }
 
 .registerItem {
-    margin-top: 3%;
-    
+    padding: 8px 20px;
 }
 
-.submitButton{
+.inputElement {
+    border: 2px solid black;
+    padding: 8px 20px;
+}
+
+.submitButton {
     border: solid #dfc56e;
     background-color: #dfc56e;
     padding: 8px 80px;
-    margin-left: 500px;
 }
 
 .extraText{
     font-size: 11px;
     color: black;
-    margin-left: 500px;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
