@@ -24,7 +24,7 @@ exports.createNewUser = (req, res, next) => {
   
       if (error.code === 11000) {
         //User did not provide a unique username
-        req.flash("error", "Username is already in use on the website!");
+        req.flash("error", "Email is already in use on the website!");
         return res.redirect("/user/register");
       }
   

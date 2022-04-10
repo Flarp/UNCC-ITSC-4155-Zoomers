@@ -5,24 +5,73 @@
 
 */
 
-
 const Professor = require("../model/professor.js")
 const bcrypt = require("bcrypt")
 const scrapingFunctions = require("../model/scraping")
 
 //Get / index page
-exports.index = (req, res) => {
-  //Retrieve the async function from the scraper function.
+exports.index = async (req, res) => {
+  //Retrieve the async function from the scraper function. //Execute the async function and return the promise to the
   const executeScrape = scrapingFunctions.getResearchHeadlines
-
-  //Execute the async function and return the promise to the
   const scrapeNewsPromise = executeScrape()
+
+  //Retreiving all SIS data to sum up total funding within SIS. (Department and sum of their research money in CSV)
+  let SISFunding = 0;
+  const SISResearch = await Professor.find({ department: "SIS" });
+  
+  SISResearch.forEach(SISObject => {
+    SISObject.research.forEach(researchItem => {
+      SISFunding += parseInt(researchItem.amount); 
+    })
+  });
+
+  //console.log(SISFunding);
+
+  //Retrieving all CS data to sum up total funding within CS. (Department and sum of their research money in CSV)
+  let CSFunding = 0;
+  const CSResearch = await Professor.find({ department: "CS" });
+
+  CSResearch.forEach(CSObject => {
+    CSObject.research.forEach(researchItem => {
+      CSFunding += parseInt(researchItem.amount);
+    })
+  });
+
+  //console.log(CSFunding);
+
+  //Retrieving all BioInformatics data to sum up total funding within BioInformatics. (Department and sum of their research money in CSV)
+  let bioInfoFunding = 0;
+  const bioInfoResearch = await Professor.find({ department: "Bioinformatics" });
+
+  bioInfoResearch.forEach(bioObject => {
+    bioObject.research.forEach(researchItem => {
+      bioInfoFunding += parseInt(researchItem.amount);
+    })
+  });
+
+  //console.log(bioInfoFunding);
+
+  //Package department and their research funding sum together into an object to pass to the view... (This will visualize with D3)
+  const researchFundingData = [
+    {
+      "department": "SIS",
+      "ResearchFunding": SISFunding
+    },
+    {
+      "department": "Computer Science",
+      "ResearchFunding": CSFunding
+    },
+    {
+      "department": "Bioinformatics",
+      "ResearchFunding": bioInfoFunding
+    }
+  ];
 
   //Consume the promise returned from the async function... retrieve news information object
   scrapeNewsPromise
     .then((newsDataArray) => {
       //console.log(newsDataArray);
-      res.render("index", { newsDataArray })
+      res.render("index", { newsDataArray, researchFundingData })
     })
     .catch((error) => {
       //Error occurred when consuming promise?
