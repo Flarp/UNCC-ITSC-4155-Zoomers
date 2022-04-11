@@ -14,7 +14,24 @@ exports.index = async (req, res) => {
   //Retrieve the async function from the scraper function. //Execute the async function and return the promise to the
   const executeScrape = scrapingFunctions.getResearchHeadlines
   const scrapeNewsPromise = executeScrape()
+  
+  //Consume the promise returned from the async function... retrieve news information object
+  scrapeNewsPromise
+    .then((newsDataArray) => {
+      //console.log(newsDataArray);
+      res.render("index", { newsDataArray })
+    })
+    .catch((error) => {
+      //Error occurred when consuming promise?
+      console.log(
+        "An error has occurred when retreiving the data object from the scrap.\n" +
+          error.message
+      )
+    })
+}
 
+//Provide JSON data of research funding from this /api/data path.. This will give it to the d3 visualizer to make a bar graph
+exports.getData = async (req, res) => {
   //Retreiving all SIS data to sum up total funding within SIS. (Department and sum of their research money in CSV)
   let SISFunding = 0;
   const SISResearch = await Professor.find({ department: "SIS" });
@@ -55,31 +72,19 @@ exports.index = async (req, res) => {
   const researchFundingData = [
     {
       "department": "SIS",
-      "ResearchFunding": SISFunding
+      "researchFunding": (parseInt(SISFunding) / 1000000)
     },
     {
       "department": "Computer Science",
-      "ResearchFunding": CSFunding
+      "researchFunding": (parseInt(CSFunding) / 1000000)
     },
     {
       "department": "Bioinformatics",
-      "ResearchFunding": bioInfoFunding
+      "researchFunding": (parseInt(bioInfoFunding) / 1000000)
     }
   ];
 
-  //Consume the promise returned from the async function... retrieve news information object
-  scrapeNewsPromise
-    .then((newsDataArray) => {
-      //console.log(newsDataArray);
-      res.render("index", { newsDataArray, researchFundingData })
-    })
-    .catch((error) => {
-      //Error occurred when consuming promise?
-      console.log(
-        "An error has occurred when retreiving the data object from the scrap.\n" +
-          error.message
-      )
-    })
+  res.send(researchFundingData);
 }
 
 //Get /contact contact page

@@ -13,6 +13,9 @@ const mainRouter = express.Router()
 //GET / --> index page (Home Page) of website
 mainRouter.get("/", mainController.index)
 
+//GET /api/data --> Grab data from the database to visualize
+mainRouter.get("/api/data", mainController.getData);
+
 //GET /contact --> Contact Page of website
 mainRouter.get("/contact", mainController.getContact)
 

@@ -65,6 +65,10 @@ hr {
   margin-left: 2%
 }
 
+#aboutDescription {
+  padding: 20px;
+}
+
 .imageCenter {
   margin-left: auto;
   margin-right: auto;
@@ -74,6 +78,8 @@ hr {
 
 .headerTitle {
   text-decoration: underline;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .UNCCDepartments {
@@ -93,6 +99,20 @@ hr {
 .informationColumn {
   display: flex;
   flex-direction: row;
+}
+
+.articleTeaser {
+  padding: 10px;
+}
+
+#grantBreakdown {
+  margin-top: 2%;
+  display: block;
+  margin-left: 110%;
+}
+
+.barChart {
+  display: block;
 }
 
 
