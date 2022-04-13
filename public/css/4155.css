@@ -20,8 +20,6 @@
   align-items: flex-end;
 }
 
-
-
 h1 {
   font-family: Roboto Thin;
 }
@@ -55,7 +53,6 @@ hr {
   color: var(--rmp-gold);
   background-color: var(--rmp-gold);
 }
-
 
 #asideNewsContainer {
   margin-right: 2%;
@@ -115,6 +112,29 @@ hr {
   display: block;
 }
 
+/* Apply some sort of JavaScript front end script to animate success and error messages! It would make it look even better! */
+.flash-success {
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: 2px solid black;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 1%;
+}
 
-
-
+.flash-errors {
+  padding: 10px;
+  background-color: #FF3131;
+  color: white;
+  border: 2px solid black;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 1%;
+}

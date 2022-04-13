@@ -68,7 +68,7 @@ exports.getData = async (req, res) => {
 
   //console.log(bioInfoFunding);
 
-  //Package department and their research funding sum together into an object to pass to the view... (This will visualize with D3)
+  //Package department and their research funding sum together into an object to pass to the view... (This will visualize with D3). Scale funding in terms of millions.
   const researchFundingData = [
     {
       "department": "SIS",
