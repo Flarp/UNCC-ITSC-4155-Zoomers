@@ -1,50 +1,53 @@
 <body>
-<head>
-  <link rel="stylesheet" href="/css/register.css">
-</head>
-<main>
-  <div class= 'box'>
-    
+  <head>
+    <link rel="stylesheet" href="/css/register.css">
+  </head>
+
+  <main>
     <div class='create'>
       <p>Create an Account</p>
     </div>
 
-    <form action='/register' method='POST'>
-      <div id="container">
+    <div id="container">
+      <form action='/user/register' method='POST'>
+
         <div class="registerItem">
-          <label for="firstName">First Name:</label>
-          <input type='text' name='firstName' />
+          <label for="firstName" class="labelText">First Name:</label>
+          <input type='text' name='firstName' class="inputElement" />
         </div>
 
         <div class="registerItem">
-          <label for="lastName">Last Name:</label>
-          <input type='text' name='lastName'/>
+          <label for="lastName" class="labelText">Last Name:</label>
+          <input type='text' name='lastName' class="inputElement" />
         </div>
 
         <div class="registerItem">
-            <label for="email">Email:</label>
-            <input type='text' name='email' />
+          <label for="email" class="labelText">Email:</label>
+          <input type='text' name='email' class="inputElement" />
         </div>
 
         <div class="registerItem">
-          <label for="username">Username:</label>
-          <input type='text' name='username' />
+          <label for="username" class="labelText">Username:</label>
+          <input type='text' name='username' class="inputElement" />
         </div>
 
         <div class="registerItem">
-          <label for="password">Password:</label>
-          <input type='password' name='password' />
+          <label for="password" class="labelText">Password:</label>
+          <input type='password' name='password' class="inputElement" />
         </div>
-      </div>
-      <br>
-      <br>
-      <button>submit</button>
+          
+        <br>
+        <br>
 
-      <div class='extraText'>
-        <p> Don't have an account? Register HERE </p>
-      </div>
+        <div>
+          <input class='submitButton' type='submit' />
+        </div>
 
-    </form>
-  </div>
-</main>
+        <div class='extraText'>
+          <p>Already have an account? Login <a href="/user/login">HERE</a></p>
+        </div>
+
+      </form>
+    </div>
+  </main>
 </body>

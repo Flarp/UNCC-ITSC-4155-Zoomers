@@ -29,7 +29,7 @@ const userSchema = new Schema({
     type: String,
     required: [true, "A username is required to create an account"],
     minLength: [3, "The username needs more characters"],
-    maxLength: [15, "The username exceeds the limit thresehold"]
+    maxLength: [15, "The username exceeds the limit thresehold"],
   },
 
   password: {

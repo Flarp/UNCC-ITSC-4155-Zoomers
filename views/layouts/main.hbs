@@ -14,16 +14,18 @@
         <div id='login-banner'>
           {{#if username}}
             <p>Welcome, {{ username }}!</p>
-            {{!--<p><a href="/signup" class="nav-link">Signup</a></p>--}}
+            <p><a href="/user/profile" class="nav-link">Profile</a></p>
           {{ else }}
-            <p><a href="/login" class="nav-link">Login</a></p>
-            <p><a href="/register" class="nav-link">Signup</a></p>
+            <p><a href="/user/login" class="nav-link">Login</a></p>
+            <p><a href="/user/register" class="nav-link">Signup</a></p>
           {{/if}}
         </div>
         <div id='nav-banner'>
           <div class='flex'>
             <a href="/" class="nav-link"><img src='/img/charlotte.png' id='icon'/></a>
-            <h1><a href="/" class="nav-link">ResearchMyProfessor</a></h1>
+            <div id="verticalAlign">
+              <h1><a href="/" class="websiteTitle">ResearchMyProfessor</a></h1>
+            </div>
           </div>
           <div class='flex right'>
             <p><a href="/" class="nav-link">Home</a></p>
@@ -35,6 +37,18 @@
     </header>
 
     <main>
+      {{#if successMessages }}
+        {{#each successMessages }}
+          <div class="flash-success"><p>{{ this }}</p></div>
+        {{/each}}
+      {{/if}}
+
+
+      {{#if errorMessages }}
+        {{#each errorMessages }}
+          <div class="flash-errors"><p>{{ this }}</p></div>
+        {{/each}}
+      {{/if}}
       {{{ body }}}
     </main>
 
@@ -55,4 +69,6 @@
       </div>
     </footer>
   </body>
+  
 </html>
+<script type="module" src="/JavaScript/d3Home.js"></script>

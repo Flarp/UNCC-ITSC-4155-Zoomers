@@ -5,19 +5,16 @@
 
 */
 
-const User = require("../model/model.js")
 const Professor = require("../model/professor.js")
 const bcrypt = require("bcrypt")
 const scrapingFunctions = require("../model/scraping")
 
 //Get / index page
-exports.index = (req, res) => {
-  //Retrieve the async function from the scraper function.
+exports.index = async (req, res) => {
+  //Retrieve the async function from the scraper function. //Execute the async function and return the promise to the
   const executeScrape = scrapingFunctions.getResearchHeadlines
-
-  //Execute the async function and return the promise to the
   const scrapeNewsPromise = executeScrape()
-
+  
   //Consume the promise returned from the async function... retrieve news information object
   scrapeNewsPromise
     .then((newsDataArray) => {
@@ -33,85 +30,71 @@ exports.index = (req, res) => {
     })
 }
 
+//Provide JSON data of research funding from this /api/data path.. This will give it to the d3 visualizer to make a bar graph
+exports.getData = async (req, res) => {
+  //Retreiving all SIS data to sum up total funding within SIS. (Department and sum of their research money in CSV)
+  let SISFunding = 0;
+  const SISResearch = await Professor.find({ department: "SIS" });
+  
+  SISResearch.forEach(SISObject => {
+    SISObject.research.forEach(researchItem => {
+      SISFunding += parseInt(researchItem.amount); 
+    })
+  });
+
+  //console.log(SISFunding);
+
+  //Retrieving all CS data to sum up total funding within CS. (Department and sum of their research money in CSV)
+  let CSFunding = 0;
+  const CSResearch = await Professor.find({ department: "CS" });
+
+  CSResearch.forEach(CSObject => {
+    CSObject.research.forEach(researchItem => {
+      CSFunding += parseInt(researchItem.amount);
+    })
+  });
+
+  //console.log(CSFunding);
+
+  //Retrieving all BioInformatics data to sum up total funding within BioInformatics. (Department and sum of their research money in CSV)
+  let bioInfoFunding = 0;
+  const bioInfoResearch = await Professor.find({ department: "Bioinformatics" });
+
+  bioInfoResearch.forEach(bioObject => {
+    bioObject.research.forEach(researchItem => {
+      bioInfoFunding += parseInt(researchItem.amount);
+    })
+  });
+
+  //console.log(bioInfoFunding);
+
+  //Package department and their research funding sum together into an object to pass to the view... (This will visualize with D3). Scale funding in terms of millions.
+  const researchFundingData = [
+    {
+      "department": "SIS",
+      "researchFunding": (parseInt(SISFunding) / 1000000)
+    },
+    {
+      "department": "Computer Science",
+      "researchFunding": (parseInt(CSFunding) / 1000000)
+    },
+    {
+      "department": "Bioinformatics",
+      "researchFunding": (parseInt(bioInfoFunding) / 1000000)
+    }
+  ];
+
+  res.send(researchFundingData);
+}
+
 //Get /contact contact page
 exports.getContact = (req, res) => {
   res.render("contact")
 }
 
-
-exports.getRegister = (req, res) => {
-  res.render("register")
-}
-
-exports.createNewUser = (req, res, next) => {
-
-    console.log('dos this part even run?')
-    
-    console.log(req.body);
-    //The new user will now be added to the model based on the information they pased in through the post request
-    let newUser = new User(req.body);
-
-    //Validate and save the user to the database. 
-    newUser.save().then(() => {
-      console.log(newUser);
-      console.log("Register Successful! Account Registered!");
-      res.redirect("/login");
-    }).catch(error => {
-      if(error.name === "ValidationError") {
-        //Validation failed, user did not proper input
-        console.log("User entered incorrect information when registering!")
-        return res.redirect("/register");
-      }
-  
-      if (error.code === 11000) {
-        //User did not provide a unique username
-        console.log("User did not provide a unique username!")
-        return res.redirect("/register");
-      }
-  
-      console.log("Server Error when registering user to website.")
-    });
-}
-
 //Get /map campus map page
 exports.getMap = (req, res) => {
   res.render("campusMap")
-}
-
-//Get /login render the login
-exports.getLogin = (req, res) => {
-  res.render("login")
-}
-
-//Post /login --> Check the login credintials against the database
-exports.checkLogin = (req, res, next) => {
-  User.findOne({ username: req.body.username }).then(account => {
-    //If an account is found, then
-    if(account) {
-
-      //Check to see if the password of the found account matches the password stored for that account. Called the created method in the model. The compare is async. The result will be Boolean.
-      account.comparePassword(req.body.password).then(result => {
-          //If the result is true then the user is not capping and can login to their account. Otherwise the password was incorrect.
-          if(result) {
-              req.session.account = account._id;  //Store the account session id from the server into the browser cookie
-              console.log("Successful Login to application!")
-              res.redirect("/");
-              
-          } else { //Incorrect password entered by the user
-              console.log("Passwords did not match. Incorrect login");
-              res.redirect("/login");
-          }
-      }).catch(error => { //Error when comparing the passwords in the model
-        console.log("Error when comparing passwords");
-        next(error);
-      });
-    } else { //Incorrect email entered by the user
-      console.log("404: Email not found");
-      res.redirect("/login");
-    }
-  }).catch(error => { //Error locating the user account in the database.
-    next(error);
-  });
 }
 
 exports.getProfProfile = async (req, res) => {

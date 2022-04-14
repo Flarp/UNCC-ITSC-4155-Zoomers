@@ -20,35 +20,41 @@
 
 .userText {
     font-size: 11px;
-    margin-left: 500px;
 }
 
 .userButton {
     border: 2px solid black;
     padding: 8px 20px;
-    margin-left: 500px;
 }
 
 .passText {
     font-size: 11px;
-    margin-left: 500px;
 }
 
 .passButton {
     border: 2px solid black;
     padding: 8px 20px;
-    margin-left: 500px;
 }
 
-.submitButton{
+.submitButton {
     border: solid #dfc56e;
     background-color: #dfc56e;
     padding: 8px 80px;
-    margin-left: 500px;
+}
+
+.submitButton:hover {
+    cursor: pointer;
+    background-color: #c5a94d;
+    border: solid #c5a94d;
 }
 
 .extraText{
     font-size: 11px;
     color: black;
-    margin-left: 500px;
+}
+
+#centerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

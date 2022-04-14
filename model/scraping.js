@@ -94,6 +94,7 @@ exports.getResearchHeadlines = async function() {
                 linkInfo: absoluteLinks[0]
             },
 
+            //Fix this object whenever UNCC updates the new article that doesnt have an image, when this goes out of rotation, it should be fine
             {
                 headerInfo: headerText[1],
                 dateInfo: dateText[1],
