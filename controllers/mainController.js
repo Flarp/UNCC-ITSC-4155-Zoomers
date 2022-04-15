@@ -156,8 +156,17 @@ exports.getProfProfile = async (req, res) => {
 }
 
 exports.addReview = async(req, res) => {
-  const { profId, title, text } = req.params
-  const profData = await Professor.findOne({ _id: profId }).lean()
-  profData.reviews.push({title, text})    //FIXME not sure if this is the right way to update DB
-  profData.save()
+  const newReview = req.body;
+  let profId = req.params.profId;
+  const profData = await Professor.findById(profId)
+  
+  profData.reviews.push(newReview);
+  
+  profData.save().then(() => {
+    res.redirect(`/professor/${profId}`)
+  }).catch(error => {
+    console.log("An error has occurred when trying to save a review for this professor.");
+  });
+
+  
 }
