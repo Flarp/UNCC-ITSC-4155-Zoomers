@@ -15,7 +15,7 @@ exports.index = async (req, res) => {
   //Retrieve the async function from the scraper function. //Execute the async function and return the promise to the
   const executeScrape = scrapingFunctions.getResearchHeadlines
   const scrapeNewsPromise = executeScrape()
-  
+
   //Consume the promise returned from the async function... retrieve news information object
   scrapeNewsPromise
     .then((newsDataArray) => {
@@ -34,58 +34,58 @@ exports.index = async (req, res) => {
 //Provide JSON data of research funding from this /api/data path.. This will give it to the d3 visualizer to make a bar graph
 exports.getData = async (req, res) => {
   //Retreiving all SIS data to sum up total funding within SIS. (Department and sum of their research money in CSV)
-  let SISFunding = 0;
-  const SISResearch = await Professor.find({ department: "SIS" });
-  
-  SISResearch.forEach(SISObject => {
-    SISObject.research.forEach(researchItem => {
-      SISFunding += parseInt(researchItem.amount); 
+  let SISFunding = 0
+  const SISResearch = await Professor.find({ department: "SIS" })
+
+  SISResearch.forEach((SISObject) => {
+    SISObject.research.forEach((researchItem) => {
+      SISFunding += parseInt(researchItem.amount)
     })
-  });
+  })
 
   //console.log(SISFunding);
 
   //Retrieving all CS data to sum up total funding within CS. (Department and sum of their research money in CSV)
-  let CSFunding = 0;
-  const CSResearch = await Professor.find({ department: "CS" });
+  let CSFunding = 0
+  const CSResearch = await Professor.find({ department: "CS" })
 
-  CSResearch.forEach(CSObject => {
-    CSObject.research.forEach(researchItem => {
-      CSFunding += parseInt(researchItem.amount);
+  CSResearch.forEach((CSObject) => {
+    CSObject.research.forEach((researchItem) => {
+      CSFunding += parseInt(researchItem.amount)
     })
-  });
+  })
 
   //console.log(CSFunding);
 
   //Retrieving all BioInformatics data to sum up total funding within BioInformatics. (Department and sum of their research money in CSV)
-  let bioInfoFunding = 0;
-  const bioInfoResearch = await Professor.find({ department: "Bioinformatics" });
+  let bioInfoFunding = 0
+  const bioInfoResearch = await Professor.find({ department: "Bioinformatics" })
 
-  bioInfoResearch.forEach(bioObject => {
-    bioObject.research.forEach(researchItem => {
-      bioInfoFunding += parseInt(researchItem.amount);
+  bioInfoResearch.forEach((bioObject) => {
+    bioObject.research.forEach((researchItem) => {
+      bioInfoFunding += parseInt(researchItem.amount)
     })
-  });
+  })
 
   //console.log(bioInfoFunding);
 
   //Package department and their research funding sum together into an object to pass to the view... (This will visualize with D3). Scale funding in terms of millions.
   const researchFundingData = [
     {
-      "department": "SIS",
-      "researchFunding": (parseInt(SISFunding) / 1000000)
+      department: "SIS",
+      researchFunding: parseInt(SISFunding) / 1000000,
     },
     {
-      "department": "Computer Science",
-      "researchFunding": (parseInt(CSFunding) / 1000000)
+      department: "Computer Science",
+      researchFunding: parseInt(CSFunding) / 1000000,
     },
     {
-      "department": "Bioinformatics",
-      "researchFunding": (parseInt(bioInfoFunding) / 1000000)
-    }
-  ];
+      department: "Bioinformatics",
+      researchFunding: parseInt(bioInfoFunding) / 1000000,
+    },
+  ]
 
-  res.send(researchFundingData);
+  res.send(researchFundingData)
 }
 
 //Get /contact contact page
@@ -94,58 +94,57 @@ exports.getContact = (req, res) => {
 }
 
 //Get /map campus map page
-exports.getMap = async(req, res) => {
-  const listOfResearchProfs = [];
-  const researchProfs = await Professor.find({}, { professor: 1 });
+exports.getMap = async (req, res) => {
+  const listOfResearchProfs = []
+  const researchProfs = await Professor.find({}, { professor: 1 })
 
   //Create arrays of information that will hold the whole set of data.
-  let mapData = [];
+  let mapData = []
 
   //Random subset that will be displayed to the page
-  let randomSubset = [];
-  let selectedValues = new Set();
-  let uniqueArray = [];
+  let randomSubset = []
+  let selectedValues = new Set()
+  let uniqueArray = []
 
   //Place all professor names into an array
-  researchProfs.forEach(e=>{
-    listOfResearchProfs.push(e.professor);
-  });
+  researchProfs.forEach((e) => {
+    listOfResearchProfs.push(e.professor)
+  })
 
   //For each entry in the JSON file, extract the key and value of the object
-  for(const [professor, value] of Object.entries(professorMapDataScraped)) {
+  for (const [professor, value] of Object.entries(professorMapDataScraped)) {
     //Filter out all the professors who do not research at UNCC. (Subset will be objects passed back to view)
-    if(listOfResearchProfs.includes(professor)) {
+    if (listOfResearchProfs.includes(professor)) {
       mapData.push({
         professorName: professor,
         professorOffice: value.office,
         professorImage: value.image,
         profDepartment: value.department,
-      });
+      })
     }
   }
 
   //While you dont have 4 unqiue random values, keep going
-  while(selectedValues.size !== 4) {
+  while (selectedValues.size !== 4) {
     //Add a random value to the set if it is unique when generated
-    selectedValues.add(Math.floor(Math.random() * 61)); 
+    selectedValues.add(Math.floor(Math.random() * 61))
   }
 
   //Do not code at 4am, I will destroy you brain you cretin
-  selectedValues.forEach(number => {
-    uniqueArray.push(number);
-  });
+  selectedValues.forEach((number) => {
+    uniqueArray.push(number)
+  })
 
   //console.log(selectedValues);
   //console.log(uniqueArray);
 
-  uniqueArray.forEach(number => {
-    randomSubset.push(mapData.at(number));
+  uniqueArray.forEach((number) => {
+    randomSubset.push(mapData.at(number))
   })
 
   //console.log(randomSubset);
 
   res.render("campusMap", { randomSubset })
- 
 }
 
 exports.getProfProfile = async (req, res) => {
@@ -154,4 +153,11 @@ exports.getProfProfile = async (req, res) => {
   const profData = await Professor.findOne({ _id: profId }).lean()
 
   res.render("profProfile", { profData })
+}
+
+exports.addReview = async(req, res) => {
+  const { profId, title, text } = req.params
+  const profData = await Professor.findOne({ _id: profId }).lean()
+  profData.reviews.push({title, text})    //FIXME not sure if this is the right way to update DB
+  profData.save()
 }

@@ -54,10 +54,16 @@
     </div>
     <div>
       <h2>Reviews</h2>
+      <form id="review-form" class="light-green card" action="/professor/{{profData.id}}" method="post">
+        <input class="light-yellow card" type="text" id="title" placeholder="Review Title" />
+        <br>
+        <textarea class="light-yellow card " id="comment" placeholder="Review Text"></textarea>
+        <br>
+        <input type="submit" class="light-yellow card" value="Add review" id="submitButton" />
+      </form>
       {{#each profData.reviews}}
         <div class="light-yellow card">
           <h3>{{title}}</h3>
-          <h4>by {{userName}}</h4>
           <p>{{text}}</p>
         </div>
       {{/each}}

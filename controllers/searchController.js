@@ -7,32 +7,27 @@
 
 //Get /search search research page
 exports.getSearch = (req, res) => {
-    res.render("search");
+  res.render("search")
 }
 
-
 exports.getData = async (req, res, next) => {
-        var searchField = $('#search').val();
-        var x = new x(searchField, "i");
-        getJSON('test.json', function(data){
-            //var output = '<ul class = "search_results">';
-            each(data, function(key, val){
-                if((val.professor.search(x) != -1) || (val.department.search(x) != -1)){
-                    output += '<li>';
-                    output += '<h2>' + val.professor + '</h2>';
-                    output += '<p>' + val.department + '</p>';
-                    output += '</li>'
-                }
-            });
-            output += '</ul>';
-            update.hbs(output);
-            console.log("working");
-        });
-    };
-
-
-
-
+  var searchField = $("#search").val()
+  var x = new x(searchField, "i")
+  getJSON("test.json", function (data) {
+    //var output = '<ul class = "search_results">';
+    each(data, function (key, val) {
+      if (val.professor.search(x) != -1 || val.department.search(x) != -1) {
+        output += "<li>"
+        output += "<h2>" + val.professor + "</h2>"
+        output += "<p>" + val.department + "</p>"
+        output += "</li>"
+      }
+    })
+    output += "</ul>"
+    update.hbs(output)
+    console.log("working")
+  })
+}
 
 /*.(document).ready(function () {
     ajaxSetup({ cache: false });
@@ -101,4 +96,3 @@ const outputHtml = matches => {
 };
 
 search.addEventListener('input', () => searchStates(search.value));*/
-
