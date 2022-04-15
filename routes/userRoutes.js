@@ -22,8 +22,8 @@ router.get("/profile", userMiddleware.isLoggedIn, userController.getProfile)
 // POST /logout --> Log the user out
 router.post("/logout", userMiddleware.isLoggedIn, userController.logout)
 
-router.get("/password", userMiddleware.isLoggedIn)
+router.get("/password", userMiddleware.isLoggedIn, userController.getPasswordReset)
 
-router.post("/password", userMiddleware.isLoggedIn)
+router.post("/password", userMiddleware.isLoggedIn, userController.execPasswordReset)
 
 module.exports = router;

@@ -42,7 +42,6 @@ exports.checkLogin = (req, res, next) => {
   User.findOne({ username: req.body.username }).then(account => {
     //If an account is found, then
     if(account) {
-
       //Check to see if the password of the found account matches the password stored for that account. Called the created method in the model. The compare is async. The result will be Boolean.
       account.comparePassword(req.body.password).then(result => {
           //If the result is true then the user is not capping and can login to their account. Otherwise the password was incorrect.
@@ -69,7 +68,7 @@ exports.checkLogin = (req, res, next) => {
 }
 
 exports.getProfile = (req, res) => {
-  res.render("profile", {user: req.user})
+  res.render("profile", {user: req.user.toObject()})
 }
 
 exports.logout = (req, res, next) => {
@@ -83,12 +82,19 @@ exports.logout = (req, res, next) => {
 }
 
 exports.getPasswordReset = (req, res) => {
-  res.render("passwordReset")
+  res.render("password")
 }
 
 exports.execPasswordReset = (req, res, next) => {
+  if (req.body.password !== req.body.confirmPassword) {
+    req.flash('error', 'Passwords must match')
+    return res.redirect("/user/password")
+  }
   req.user.password = req.body.password
   req.user.save()
-    .then(_ => res.redirect("/user/profile"))
+    .then(_ => {
+      req.flash('success', 'Password successfully changed!')
+      res.redirect("/user/profile")
+    })
     .catch(next)
 }
