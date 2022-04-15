@@ -154,3 +154,10 @@ exports.getProfProfile = async (req, res) => {
 
   res.render("profProfile", { profData })
 }
+
+exports.addReview = async(req, res) => {
+  const { profId, title, text } = req.params
+  const profData = await Professor.findOne({ _id: profId }).lean()
+  profData.reviews.push({title, text})    //FIXME not sure if this is the right way to update DB
+  profData.save()
+}

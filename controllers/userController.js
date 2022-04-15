@@ -77,3 +77,10 @@ exports.checkLogin = (req, res, next) => {
       next(error)
     })
 }
+
+exports.addFavorite = async (req, res) => {
+  const { userId, profId } = req.params
+  const userData = await User.findOne({ _id: userId }).lean()
+  userData.favorites.push(profId)
+  userData.save() // FIXME not sure if this is the right way to save to DB
+}
