@@ -135,14 +135,14 @@ exports.getMap = async(req, res) => {
     uniqueArray.push(number);
   });
 
-  console.log(selectedValues);
-  console.log(uniqueArray);
+  //console.log(selectedValues);
+  //console.log(uniqueArray);
 
   uniqueArray.forEach(number => {
     randomSubset.push(mapData.at(number));
   })
 
-  console.log(randomSubset);
+  //console.log(randomSubset);
 
   res.render("campusMap", { randomSubset })
  

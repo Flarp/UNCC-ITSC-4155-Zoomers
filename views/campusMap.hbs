@@ -7,65 +7,22 @@
             <h2 class="sectionHeader">Select a professor!</h2>
             <hr id="headerSeperator">
 
-            <div class="nested">
-                <div class="verticalFrame">
-                    <img src="/img/placeholder.png" width="200" height="200" class="profImage" />
-                </div>
-                <div id="profItemCenter">
-                    <div class="doubleNested">
-                        <p class="profName">Professor X</p>
-                        <p class="profDept">Department</p>
-                        <p class="profBuilding">Office Location</p>
+            {{#each randomSubset }}
+                <div class="nested">
+                    <div class="verticalFrame">
+                        <img src={{ professorImage }} width="200" height="200" class="profImage" />
+                    </div>
+                    <div id="profItemCenter">
+                        <div class="doubleNested">
+                            <p class="profName">{{ professorName }}</p>
+                            <p class="profDept">{{ profDepartment }}</p>
+                            <p class="profBuilding">{{ professorOffice }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <hr id="headerSeperator">
-
-            <div class="nested">
-                <div class="verticalFrame">
-                    <img src="/img/placeholder.png" width="200" height="200" class="profImage" />
-                </div>
-                <div id="profItemCenter">
-                    <div class="doubleNested">
-                        <p class="profName">Professor X</p>
-                        <p class="profDept">Department</p>
-                        <p class="profBuilding">Office Location</p>
-                    </div>
-                </div>
-            </div>
-
-            <hr id="headerSeperator">
-
-            <div class="nested">
-                <div class="verticalFrame">
-                    <img src="/img/placeholder.png" width="200" height="200" class="profImage" />
-                </div>
-                <div id="profItemCenter">
-                    <div class="doubleNested">
-                        <p class="profName">Professor X</p>
-                        <p class="profDept">Department</p>
-                        <p class="profBuilding">Office Location</p>
-                    </div>
-                </div>
-            </div>
-
-            <hr id="headerSeperator">
-
-            <div class="nested">
-                <div class="verticalFrame">
-                    <img src="/img/placeholder.png" width="200" height="200" class="profImage" />
-                </div>
-                <div id="profItemCenter">
-                    <div class="doubleNested">
-                        <p class="profName">Professor X</p>
-                        <p class="profDept">Department</p>
-                        <p class="profBuilding">Office Location</p>
-                    </div>
-                </div>
-            </div>
-
-            <hr id="headerSeperator">
+                <hr id="headerSeperator">
+            {{/each}}
 
         </div>
         <div id="googleMap" class="background-gold">
