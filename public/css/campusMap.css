@@ -1,0 +1,97 @@
+/*
+
+    ITCS 4155 Group 3 - The Zoomers
+    CSS Styling for the campus map view
+    Date: April 13th
+
+*/
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 2em;
+    background-color: var(--rmp-green);
+    padding: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: center;
+}
+
+#campusHeader {
+    text-align: center;
+    color: black;
+}
+
+#headerSeperator {
+    height: 5px;
+    border: 1px black solid;
+    color: var(--rmp-gold);
+    background-color: var(--rmp-dark);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.background-gold {
+    background-color: var(--rmp-gold);
+}
+
+.doubleNested > p {
+    color: white;
+    font-size: 17px;
+}
+
+.sectionHeader {
+    color: white;
+    font-size: 25px;
+}
+
+.nested {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.nested:hover {
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.doubleNested {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.profImage {
+    margin-left: auto;
+    margin-right: 1%;
+    display: block;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 3px black solid;
+}
+
+.verticalFrame {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#map { 
+    display: grid;
+    height: 800px;
+    width: 90%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7%;
+}
+
+#profItemCenter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 1%;
+    margin-right: 1%;
+}
