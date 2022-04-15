@@ -1,6 +1,7 @@
 @import "vars.css";
 @import "layout.css";
 @import "helpers.css";
+@import "profile.css";
 
 .right > p {
   padding-left: 0.5em;

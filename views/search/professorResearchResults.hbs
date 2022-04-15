@@ -1,0 +1,8 @@
+{{#each professor }}
+  <li>
+    {{ this.professor }}
+  </li>
+  {{#each this.researchAreas }}
+    {{ this }}
+  {{/each}}
+{{/each}}

@@ -13,5 +13,9 @@ const searchRouter = express.Router();
 //GET /search --> Search research page of website
 searchRouter.get("/", searchController.getSearch);
 
+searchRouter.get("/classes", searchController.getClassSearch)
+
+searchRouter.post("/classes", searchController.execClassSearch)
+
 //Provide the router to the app.js file
 module.exports = searchRouter;

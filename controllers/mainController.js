@@ -14,7 +14,7 @@ exports.index = async (req, res) => {
   //Retrieve the async function from the scraper function. //Execute the async function and return the promise to the
   const executeScrape = scrapingFunctions.getResearchHeadlines
   const scrapeNewsPromise = executeScrape()
-  
+
   //Consume the promise returned from the async function... retrieve news information object
   scrapeNewsPromise
     .then((newsDataArray) => {
@@ -35,10 +35,10 @@ exports.getData = async (req, res) => {
   //Retreiving all SIS data to sum up total funding within SIS. (Department and sum of their research money in CSV)
   let SISFunding = 0;
   const SISResearch = await Professor.find({ department: "SIS" });
-  
+
   SISResearch.forEach(SISObject => {
     SISObject.research.forEach(researchItem => {
-      SISFunding += parseInt(researchItem.amount); 
+      SISFunding += parseInt(researchItem.amount);
     })
   });
 
