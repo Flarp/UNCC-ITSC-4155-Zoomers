@@ -8,6 +8,7 @@
 const Professor = require("../model/professor.js")
 const bcrypt = require("bcrypt")
 const scrapingFunctions = require("../model/scraping")
+const professorMapDataScraped = require("../public/data/googleMapData.json")
 
 //Get / index page
 exports.index = async (req, res) => {
@@ -93,8 +94,58 @@ exports.getContact = (req, res) => {
 }
 
 //Get /map campus map page
-exports.getMap = (req, res) => {
-  res.render("campusMap")
+exports.getMap = async(req, res) => {
+  const listOfResearchProfs = [];
+  const researchProfs = await Professor.find({}, { professor: 1 });
+
+  //Create arrays of information that will hold the whole set of data.
+  let mapData = [];
+
+  //Random subset that will be displayed to the page
+  let randomSubset = [];
+  let selectedValues = new Set();
+  let uniqueArray = [];
+
+  //Place all professor names into an array
+  researchProfs.forEach(e=>{
+    listOfResearchProfs.push(e.professor);
+  });
+
+  //For each entry in the JSON file, extract the key and value of the object
+  for(const [professor, value] of Object.entries(professorMapDataScraped)) {
+    //Filter out all the professors who do not research at UNCC. (Subset will be objects passed back to view)
+    if(listOfResearchProfs.includes(professor)) {
+      mapData.push({
+        professorName: professor,
+        professorOffice: value.office,
+        professorImage: value.image,
+        profDepartment: value.department,
+      });
+    }
+  }
+
+  //While you dont have 4 unqiue random values, keep going
+  while(selectedValues.size !== 4) {
+    //Add a random value to the set if it is unique when generated
+    selectedValues.add(Math.floor(Math.random() * 61)); 
+  }
+
+  //Do not code at 4am, I will destroy you brain you cretin
+  selectedValues.forEach(number => {
+    uniqueArray.push(number);
+  });
+
+  console.log(selectedValues);
+  console.log(uniqueArray);
+
+  uniqueArray.forEach(number => {
+    randomSubset.push(mapData.at(number));
+  })
+
+  console.log(randomSubset);
+
+  res.render("campusMap", { randomSubset })
+ 
 }
 
 exports.getProfProfile = async (req, res) => {

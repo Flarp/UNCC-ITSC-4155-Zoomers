@@ -35,10 +35,6 @@
     background-color: var(--rmp-gold);
 }
 
-#selectProf {
-    
-}
-
 .doubleNested > p {
     color: white;
     font-size: 17px;
@@ -52,6 +48,8 @@
 .nested {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .doubleNested {
@@ -61,7 +59,7 @@
 
 .profImage {
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 1%;
     display: block;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -76,5 +74,18 @@
 #map { 
     display: grid;
     height: 800px;
-    width: 100%;
+    width: 90%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7%;
+}
+
+#profItemCenter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 1%;
+    margin-right: 1%;
 }
