@@ -29,6 +29,10 @@ footer {
   align-items: center;
 }
 
+strong {
+  font-family: Roboto Black;
+}
+
 #login-banner {
   background-color: var(--rmp-gold);
   margin-top: 0em;

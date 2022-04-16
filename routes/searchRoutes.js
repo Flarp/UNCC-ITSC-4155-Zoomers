@@ -7,11 +7,21 @@
 
 const express = require("express");
 const searchController = require("../controllers/searchController");
-
+const filterMiddleware = require("../middlewares/routeFilter")
 const searchRouter = express.Router();
 
 //GET /search --> Search research page of website
 searchRouter.get("/", searchController.getSearch);
+
+searchRouter.post("/classes", searchController.execClassSearch)
+
+searchRouter.get("/classes", searchController.getClassSearch)
+
+searchRouter.post("/research", searchController.execResearchSearch)
+
+searchRouter.get("/research", searchController.getResearchSearch)
+
+
 
 //Provide the router to the app.js file
 module.exports = searchRouter;

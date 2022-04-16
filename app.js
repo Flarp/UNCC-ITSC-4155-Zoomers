@@ -78,10 +78,13 @@ app.use(flash())
 //Divide up different flash responses, store these into res local variables that will be used in the template engine
 app.use((req, res, next) => {
   //Store success and error messages into res object (locals)
-  res.locals.successMessages = req.flash("success")
-  res.locals.errorMessages = req.flash("error")
-  next()
-})
+  res.locals.successMessages = req.flash("success");
+  res.locals.errorMessages = req.flash("error");
+  res.locals.username = req.session.username || false
+  next();
+
+});
+
 
 //Setup main routes of application, link to main routes
 app.use("/", mainRoutes)

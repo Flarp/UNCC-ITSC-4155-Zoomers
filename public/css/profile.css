@@ -1,3 +1,8 @@
 @import "vars.css";
 @import "layout.css";
 @import "helpers.css";
+
+#user-area {
+  margin-left: 3em;
+  margin-top: 3em;
+}
