@@ -106,4 +106,5 @@ exports.addFavorite = async (req, res) => {
   userData.favorites.push(profId)
   userData.save() // FIXME not sure if this is the right way to save to DB
 
+  }
 }

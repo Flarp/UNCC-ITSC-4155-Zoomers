@@ -32,11 +32,6 @@ let port = 3000
 app.set("view engine", "hbs")
 app.set("views", "./views")
 
-mongoose.connect('mongodb://4.tcp.ngrok.io:14459/researchmyprofessor').then(_ => {
-  app.listen(port, host, ()=> {
-    console.log("Server is running on port", port)
-  });
-}).catch(error => console.log(error.message));
 mongoose
   .connect("mongodb://localhost:27017/researchmyprofessor")
   .then((_) => {
@@ -53,13 +48,7 @@ app.use(
     extended: true,
   })
 )
-app.use(session({
-  secret: "4155-SoftwareDev",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {maxAge: 60*60*1000}, //Lifetime of an hour. Mins * seconds * 1000 (This is 1 hour)
-  store: new MongoStore({mongoUrl: 'mongodb://4.tcp.ngrok.io:14459/researchmyprofessor'}) //Sessions will now be connected to our mongoDB server and store that information along with other info. Collection by default is named sessions
-}));
+
 app.use(
   session({
     secret: "4155-SoftwareDev",
