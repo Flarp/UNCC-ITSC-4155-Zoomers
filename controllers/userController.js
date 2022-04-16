@@ -47,6 +47,7 @@ exports.checkLogin = (req, res, next) => {
           //If the result is true then the user is not capping and can login to their account. Otherwise the password was incorrect.
           if(result) {
               req.session.account = account._id;  //Store the account session id from the server into the browser cookie
+              req.session.username = account.username
               req.flash("success", "Successfully logged in.");
               res.redirect("/");
 

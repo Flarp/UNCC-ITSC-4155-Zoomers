@@ -20,7 +20,7 @@ router.post("/login", userMiddleware.isGuest, userController.checkLogin);
 router.get("/profile", userMiddleware.isLoggedIn, userController.getProfile)
 
 // POST /logout --> Log the user out
-router.post("/logout", userMiddleware.isLoggedIn, userController.logout)
+router.get("/logout", userMiddleware.isLoggedIn, userController.logout)
 
 router.get("/password", userMiddleware.isLoggedIn, userController.getPasswordReset)
 

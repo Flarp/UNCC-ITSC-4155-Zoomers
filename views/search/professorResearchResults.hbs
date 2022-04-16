@@ -1,16 +1,23 @@
-{{#if class}}
-  <h1>Professors who teach <strong>{{class.dept}} {{class.code}} - {{class.name}}</strong></h1>
-{{/if}}
-{{#if research}}
-  <h1>Professors who research <strong>{{research}}</strong></h1>
-{{/if}}
-{{#each professors }}
-  <h2 style="text-align: left; text-decoration: underline"><a href="/professor/{{ this._id }}">{{ this.professor }}</a></h2>
-  <ul>
-  {{#each this.researchAreas }}
-    <li>
-      {{ this }}
-    </li>
+{{#if professors}}
+  {{#if class}}
+    <h1>Professors who teach <strong>{{class.dept}} {{class.code}} - {{class.name}}</strong></h1>
+  {{/if}}
+  {{#if research}}
+    <h1>Professors who research <strong>{{research}}</strong></h1>
+  {{/if}}
+  {{#each professors }}
+    <h2 style="text-align: left; text-decoration: underline"><a href="/professor/{{ this._id }}">{{ this.professor }}</a></h2>
+    <ul>
+    {{#each this.researchAreas }}
+      <li>
+        {{ this }}
+      </li>
+    {{/each}}
+    </ul>
   {{/each}}
-  </ul>
-{{/each}}
+{{ else }}
+  <h1>No Results Found</h1>
+  <p>
+    There are no results for the given search.
+  </p>
+{{/if}}
