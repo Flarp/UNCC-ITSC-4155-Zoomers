@@ -7,29 +7,30 @@ exports.getRegister = (req, res) => {
 
 //Post /user/register --> Register a new user to site if they meet requirements
 exports.createNewUser = (req, res, next) => {
-    //The new user will now be added to the model based on the information they pased in through the post request
-    let newUser = new User(req.body);
+  //The new user will now be added to the model based on the information they pased in through the post request
+  let newUser = new User(req.body)
+  //Validate and save the user to the database.
+  newUser
+    .save()
+    .then(() => {
+      req.flash("success", "Account successfully created!")
 
-    //Validate and save the user to the database.
-    newUser.save().then(() => {
-      req.flash("success", "Account successfully created!");
-
-      res.redirect("/user/login");
-    }).catch(error => {
-      if(error.name === "ValidationError") {
+      res.redirect("/user/login")
+    })
+    .catch((error) => {
+      if (error.name === "ValidationError") {
         //Validation failed, user did not proper input
-        req.flash("error", error.message);
-        return res.redirect("/user/register");
+        req.flash("error", error.message)
+        return res.redirect("/user/register")
       }
 
       if (error.code === 11000) {
         //User did not provide a unique username
-        req.flash("error", "Email is already in use on the website!");
-        return res.redirect("/user/register");
+        req.flash("error", "Email is already in use on the website!")
+        return res.redirect("/user/register")
       }
-
-      next(error);
-    });
+      next(error)
+    })
 }
 
 //Get /user/login render the login
@@ -98,4 +99,11 @@ exports.execPasswordReset = (req, res, next) => {
       res.redirect("/user/profile")
     })
     .catch(next)
+
+exports.addFavorite = async (req, res) => {
+  const { userId, profId } = req.params
+  const userData = await User.findOne({ _id: userId }).lean()
+  userData.favorites.push(profId)
+  userData.save() // FIXME not sure if this is the right way to save to DB
+
 }

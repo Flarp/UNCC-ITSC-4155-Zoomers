@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const mongoose = require("mongoose")
+const bcrypt = require("bcrypt")
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 const userSchema = new Schema({
   firstName: {
@@ -15,7 +15,7 @@ const userSchema = new Schema({
     type: String,
     required: [true, "The user's last name is required!"],
     minlength: [1, "The user's last name needs to have a character!"],
-    maxlength: [70, "The user exceeded input thresehold!"]
+    maxlength: [70, "The user exceeded input thresehold!"],
   },
 
   email: {
@@ -35,35 +35,40 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, "User's password to the account is required."],
-  }
-});
+  },
+
+  favorites: [String],
+})
 
 //Reolace plaintext string from user with hash + salted string to store in dataase
 //Pre middleware - Run this middleware before saving the document
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function (next) {
   //Grab schema instance
-  let user = this;
+  let user = this
 
   //If the password isnt being modified (Other field), then no issue
-  if(!user.isModified("password")) {
-    return next;
+  if (!user.isModified("password")) {
+    return next
   } else {
     //Hash and salt the plaintext password
-    bcrypt.hash(user.password, 10).then(hashedPassword => {
-      user.password = hashedPassword;
-      next();
-    }).catch(error=> {
-      next(error);
-    })
+    bcrypt
+      .hash(user.password, 10)
+      .then((hashedPassword) => {
+        user.password = hashedPassword
+        next()
+      })
+      .catch((error) => {
+        next(error)
+      })
   }
-});
+})
 
 //Compare the login info attempt with what is stored in the database
-userSchema.methods.comparePassword = function(plainTextPassword) {
+userSchema.methods.comparePassword = function (plainTextPassword) {
   //Compare input with what is stored in the database
-  return bcrypt.compare(plainTextPassword, this.password);
+  return bcrypt.compare(plainTextPassword, this.password)
 }
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model("User", userSchema)
 
 //module.exports
