@@ -94,11 +94,10 @@ exports.getResearchHeadlines = async function() {
                 linkInfo: absoluteLinks[0]
             },
 
-            //Fix this object whenever UNCC updates the new article that doesnt have an image, when this goes out of rotation, it should be fine
             {
                 headerInfo: headerText[1],
                 dateInfo: dateText[1],
-                imageInfo: "https://charlotteaxios-charlotteagenda.netdna-ssl.com/wp-content/uploads/2020/12/Agenda-Alumni-Cover-Image.jpg.webp",
+                imageInfo: imageSrc[1],
                 teaserInfo: teaserText[1],
                 linkInfo: absoluteLinks[1]
             },
@@ -106,7 +105,7 @@ exports.getResearchHeadlines = async function() {
             {
                 headerInfo: headerText[2],
                 dateInfo: dateText[2],
-                imageInfo: imageSrc[1],
+                imageInfo: imageSrc[2],
                 teaserInfo: teaserText[2],
                 linkInfo: absoluteLinks[2]
             },
@@ -114,17 +113,9 @@ exports.getResearchHeadlines = async function() {
             {
                 headerInfo: headerText[3],
                 dateInfo: dateText[3],
-                imageInfo: imageSrc[2],
+                imageInfo: imageSrc[3],
                 teaserInfo: teaserText[3],
                 linkInfo: absoluteLinks[3]
-            },
-
-            {
-                headerInfo: headerText[4],
-                dateInfo: dateText[4],
-                imageInfo: imageSrc[3],
-                teaserInfo: teaserText[4],
-                linkInfo: absoluteLinks[4]
             },
             
         ];

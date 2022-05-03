@@ -48,3 +48,67 @@ strong {
   margin-top: 0.25em;
   margin-bottom: 0.25em;
 }
+
+.navListItem {
+  list-style: none;
+}
+
+.pushOff {
+  margin-right: 2%;
+}
+
+.navMargin {
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  padding: 0;
+  text-align: center;
+}
+
+.placeholderButton {
+  background: inherit;
+  border: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0;
+}
+
+.placeholderButton:hover {
+  font-weight: bold;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownSelect {
+  position: absolute;
+  left: 0;
+  top: calc(100% + .001rem); /* Get 100% of the top, then add .25rem to the top of an element. This will create a buffer in between elements */  
+  background-color: var(--rmp-green);
+  padding: 1rem;
+  border-radius: .2rem;
+  box-shadow: 0 2px 45px 0 rgba(0, 0, 0, .3);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 170ms ease-in-out, transform 170ms ease-in-out;
+  pointer-events: none;
+}
+
+/* Show the link within the dropdown div and then get the dropdown select menu along with it when element focussed */
+.dropdown > .placeholderButton:focus + .dropdownSelect {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.itemText {
+  margin: 0;
+  padding: 5px;
+  border: 3px solid white;
+  border-radius: 7px;
+}

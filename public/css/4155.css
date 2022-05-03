@@ -78,6 +78,7 @@ hr {
   text-decoration: underline;
   padding-left: 10px;
   padding-right: 10px;
+  margin-top: 0;
 }
 
 .UNCCDepartments {
@@ -101,6 +102,8 @@ hr {
 
 .articleTeaser {
   padding: 10px;
+  font-size: 16px;
+  text-align: center;
 }
 
 #grantBreakdown {
@@ -111,6 +114,16 @@ hr {
 
 .barChart {
   display: block;
+}
+
+.feedDate {
+  font-size: 18px;
+  text-align: center;
+}
+
+.feedHeader {
+  font-size: 22px;
+  text-align: center;
 }
 
 /* Apply some sort of JavaScript front end script to animate success and error messages! It would make it look even better! */

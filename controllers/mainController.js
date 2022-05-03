@@ -12,7 +12,7 @@ const professorMapDataScraped = require("../public/data/googleMapData.json")
 
 //Get / index page
 exports.index = async (req, res) => {
-  console.log(res.locals)
+  //console.log(res.locals)
   //Retrieve the async function from the scraper function. //Execute the async function and return the promise to the
   const executeScrape = scrapingFunctions.getResearchHeadlines
   const scrapeNewsPromise = executeScrape()

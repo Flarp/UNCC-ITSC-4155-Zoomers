@@ -15,17 +15,14 @@
       <!-- Get the array of objects (Each object holds an article w/ data). For each object in the array... Access the keys of object directly! -->
       {{#each newsDataArray}}
         <div class="headlineItem">
-          <a href={{linkInfo}} class="nav-link"><img
-              src={{imageInfo}}
-              class="imageCenter"
-              width="250"
-              height="150"
-            /></a>
-          <h3 class="headerTitle"><a
-              href={{linkInfo}}
-              class="nav-link"
-            >{{headerInfo}} : {{dateInfo}}</a></h3>
+          <a href={{ linkInfo }} class="nav-link">
+          <img src={{imageInfo}} class="imageCenter" width="350" height="200" />
+          <h3 class="headerTitle">
+          <p class="feedHeader">{{headerInfo}}</p>
+          <p class="feedDate">Date Published - {{dateInfo}}</p>
+          </h3>
           <p class="articleTeaser">{{teaserInfo}}</p>
+          </a>
         </div>
         <hr class="headerSeperator" />
       {{/each}}

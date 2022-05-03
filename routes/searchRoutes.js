@@ -13,14 +13,17 @@ const searchRouter = express.Router();
 //GET /search --> Search research page of website
 searchRouter.get("/", searchController.getSearch);
 
+//Post /search/classes --> Fetch results based on query of search
 searchRouter.post("/classes", searchController.execClassSearch)
 
+//GET /search/classes --> Get page that will search for professors via class
 searchRouter.get("/classes", searchController.getClassSearch)
 
+//Post /search/research --> Fetch results based on query of search in research page
 searchRouter.post("/research", searchController.execResearchSearch)
 
+//GET /search/research --> Get page that will search for professors via research
 searchRouter.get("/research", searchController.getResearchSearch)
-
 
 
 //Provide the router to the app.js file
