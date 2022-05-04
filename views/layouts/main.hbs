@@ -13,78 +13,81 @@
   </head>
 
   <body>
-
-    <header>
-      <nav>
-        <div id='login-banner'>
-          {{#if username}}
-            <p>Welcome, {{ username }}!</p>
-            <p><a href="/user/profile" class="nav-link">Profile</a></p>
-            <p><a href="/user/logout" class="nav-link">Logout</a></p>
-          {{ else }}
-            <p><a href="/user/login" class="nav-link">Login</a></p>
-            <p><a href="/user/register" class="nav-link">Signup</a></p>
-          {{/if}}
-        </div>
-        <div id='nav-banner'>
-          <div class='flex'>
-            <a href="/" class="nav-link"><img src='/img/charlotte.png' id='icon'/></a>
-            <div id="verticalAlign">
-              <h1><a href="/" class="websiteTitle">ResearchMyProfessor</a></h1>
+    <div id="pageWrapper">
+      <div id="contentWrapper">
+        <header>
+          <nav>
+            <div id='login-banner'>
+              {{#if username}}
+                <p>Welcome, {{ username }}!</p>
+                <p><a href="/user/profile" class="nav-link">Profile</a></p>
+                <p><a href="/user/logout" class="nav-link">Logout</a></p>
+              {{ else }}
+                <p><a href="/user/login" class="nav-link">Login</a></p>
+                <p><a href="/user/register" class="nav-link">Signup</a></p>
+              {{/if}}
             </div>
-          </div>
-          <div class='flex right pushOff'>
-            <ul class="navMargin">
-              <li class="navListItem"><a href="/" class="nav-link">Home</a></li>
-            </ul>
-            <div class="navMargin dropdown">
-              <button class="placeholderButton">Search Options</button>
-              <div class="dropdownSelect">
-                <a href="/search" class="nav-link"><p class="itemText">General Search</p></a>
-                <a href="/search/classes" class="nav-link"><p class="itemText">Search Classes</p></a>
-                <a href="/search/research" class="nav-link"><p class="itemText">Search Research</p></a>
+            <div id='nav-banner'>
+              <div class='flex'>
+                <a href="/" class="nav-link"><img src='/img/charlotte.png' id='icon'/></a>
+                <div id="verticalAlign">
+                  <h1><a href="/" class="websiteTitle">ResearchMyProfessor</a></h1>
+                </div>
+              </div>
+              <div class='flex right pushOff'>
+                <ul class="navMargin">
+                  <li class="navListItem"><a href="/" class="nav-link">Home</a></li>
+                </ul>
+                <div class="navMargin dropdown">
+                  <button class="placeholderButton">Search Options</button>
+                  <div class="dropdownSelect">
+                    <a href="/search" class="nav-link"><p class="itemText">General Search</p></a>
+                    <a href="/search/classes" class="nav-link"><p class="itemText">Search Classes</p></a>
+                    <a href="/search/research" class="nav-link"><p class="itemText">Search Research</p></a>
+                  </div>
+                </div>
+                <ul class="navMargin">
+                  <li class="navListItem"><a href="/map" class="nav-link">Campus Map</a></li>
+                </ul>
               </div>
             </div>
-            <ul class="navMargin">
-              <li class="navListItem"><a href="/map" class="nav-link">Campus Map</a></li>
-            </ul>
+          </nav>
+        </header>
+
+        <main>
+          {{#if successMessages }}
+            {{#each successMessages }}
+              <div class="flash-success"><p>{{ this }}</p></div>
+            {{/each}}
+          {{/if}}
+
+
+          {{#if errorMessages }}
+            {{#each errorMessages }}
+              <div class="flash-errors"><p>{{ this }}</p></div>
+            {{/each}}
+          {{/if}}
+          {{{ body }}}
+        </main>
+
+        <footer>
+          <div class='flex center'>
+            <img src='/img/copyright.png' class='footer-icon invert'/>
+            <p class='squished'>2022</p>
           </div>
-        </div>
-      </nav>
-    </header>
+          <div class='flex center space-around'>
+            <p class='squished'><a href="https://www.charlotte.edu/" class="nav-link">UNCC Website</a></p>
+            <p class='squished'><a href="/contact" class="nav-link">Contact Us</a></p>
+            <div class='flex space-around'>
+              <a href="https://www.facebook.com/UNCCharlotte/"><img src='/img/facebook.png' class='footer-icon'/></a>
+              <a href="https://twitter.com/unccharlotte"><img src='/img/twitter.png' class='footer-icon' /></a>
+              <a href="https://www.instagram.com/unccharlotte/"><img src='/img/instagram.png' class='footer-icon' /></a>
 
-    <main>
-      {{#if successMessages }}
-        {{#each successMessages }}
-          <div class="flash-success"><p>{{ this }}</p></div>
-        {{/each}}
-      {{/if}}
-
-
-      {{#if errorMessages }}
-        {{#each errorMessages }}
-          <div class="flash-errors"><p>{{ this }}</p></div>
-        {{/each}}
-      {{/if}}
-      {{{ body }}}
-    </main>
-
-    <footer>
-      <div class='flex center'>
-        <img src='/img/copyright.png' class='footer-icon invert'/>
-        <p class='squished'>2022</p>
+            </div>
+          </div>
+        </footer>
       </div>
-      <div class='flex center space-around'>
-        <p class='squished'><a href="https://www.charlotte.edu/" class="nav-link">UNCC Website</a></p>
-        <p class='squished'><a href="/contact" class="nav-link">Contact Us</a></p>
-        <div class='flex space-around'>
-          <a href="https://www.facebook.com/UNCCharlotte/"><img src='/img/facebook.png' class='footer-icon'/></a>
-          <a href="https://twitter.com/unccharlotte"><img src='/img/twitter.png' class='footer-icon' /></a>
-          <a href="https://www.instagram.com/unccharlotte/"><img src='/img/instagram.png' class='footer-icon' /></a>
-
-        </div>
-      </div>
-    </footer>
+    </div>
   </body>
 
 </html>

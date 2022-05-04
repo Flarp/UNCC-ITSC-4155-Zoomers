@@ -1,0 +1,98 @@
+/* 
+    ITSC 4155 - Group 3: "The Zoomers"
+    Styling for the search research page.
+    May 3rd, 2022
+
+*/
+@import "vars.css";
+
+#pageHeader {
+    text-align: center;
+    font-family: Roboto Thin
+}
+
+#formContainer {
+    background-color: var(--rmp-green);
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    border-radius: 10px;
+}
+
+#subPageHeader {
+    font-family: Roboto Thin;
+    padding-top: 2rem;
+}
+
+#researchForm {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+}
+
+#mainInfo {
+    border-color: var(--rmp-gold);
+    border-width: 5px;
+    border-radius: 15px;
+}
+
+#mainContent {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.researchLegend {
+    background-color: var(--rmp-gold);
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+#inputLabel {
+    font-size: 20px;
+    margin-right: 30%;
+}
+
+#researchInput {
+    width: 17rem;
+}
+
+.submitButton {
+    border: solid #dfc56e;
+    background-color: #dfc56e;
+    padding: 8px 80px;
+}
+
+.submitButton:hover {
+    cursor: pointer;
+    background-color: #c5a94d;
+    border: solid #c5a94d;
+}
+
+#classContext {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+}
+
+#contextText {
+    text-align: center;
+}
+
+.headerSeperator {
+    height: 5px;
+    border: 1px black solid;
+    color: var(--rmp-gold);
+    background-color: var(--rmp-gold);
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

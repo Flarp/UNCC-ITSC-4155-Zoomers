@@ -18,8 +18,20 @@ main {
   margin: 0.5em;
 }
 
+/* Fixing the footer to make it stay at the bottom. Page will be relative and have a minimum of 100% height. This will make the position of the footer at the bottom even if there isnt enough content. (Footer will be aboslute to this relative) */
+#pageWrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Provide space in between content and the footer on page. */
+#contentWrapper {
+  padding-bottom: 6rem;
+}
+
+/* Footer is now absolute on the bottom of the page. It is relative to the page wrapper that has a min height of 100% */
 footer {
-  position: sticky;
+  position: absolute;
   bottom: 0;
   background-color: var(--rmp-dark);
   color: white;
@@ -96,7 +108,6 @@ strong {
   opacity: 0;
   transform: translateY(-15px);
   transition: opacity 170ms ease-in-out, transform 170ms ease-in-out;
-  pointer-events: none;
 }
 
 /* Show the link within the dropdown div and then get the dropdown select menu along with it when element focussed */

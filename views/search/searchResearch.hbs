@@ -1,8 +1,29 @@
-<h1>Search Professors by Research Area</h1>
-<h3 style="font-family: Roboto Thin">See what research areas different CCI professors specialize in</h3>
+<head>
+  <link rel="stylesheet" href="/css/searchResearch.css">
+</head>
 
-<form method="POST" action="/search/research" style="margin-left: 3em; margin-top: 3em; width: 33%">
-  <label for="researchArea" style="font-family: Roboto Black; float: left">Research Area</label>
-  <input type="text" name="researchArea" style="float: right"/> <br /><br />
-  <input type="submit" class="submitButton" />
-</form>
+<h1 id="pageHeader">Search Professors by Research Area</h1>
+<div id="formContainer">
+  <h2 id="subPageHeader">See what research areas different CCI professors specialize in...</h2>
+  <hr class="headerSeperator" />
+  <form method="POST" action="/search/research" id="researchForm">
+    <fieldset id="mainInfo" class="fieldsetPadding">
+      <legend class="researchLegend">Search via Research!</legend>
+      <div id="mainContent">
+        <label id="inputLabel" for="researchArea">Research Area</label>
+        <br />
+        <input type="text" name="researchArea" id="researchInput" /> <br /><br />
+        <div id="flex">
+          <input type="submit" class="submitButton" />
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <hr class="headerSeperator" />
+
+  <div id="classContext">
+    <p id="contextText">This search page allows users to search for professors by research field. There are many different research fields throughout the field of computer science. Take for example Parallel Computing, a subtopic of computer science that focusses on performence computing. By searching for various topics, users will be able to locate experts within the various fields.</p>
+  </div>
+</div>
+
