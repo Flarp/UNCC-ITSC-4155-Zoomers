@@ -1,11 +1,32 @@
-<h1 id="pageHeader">Search Professors by Class</h1>
-<h3 style="font-family: Roboto Thin">See what professors teach a class and what research the class can possibly lead into</h3>
+<head>
+  <link rel="stylesheet" href="/css/searchResearchClass.css">
+</head>
 
-<form method="POST" action="/search/classes" style="margin-left: 3em; margin-top: 3em; width: 33%">
-  <label for="class_id" style="font-family: Roboto Black; float: left">Department</label>
-  <input type="text" name="class_id" style="float: right"/> <br /><br />
+<h1 id="pageHeader">Search Professors by Classes Taught</h1>
+<div id="formContainer">
+  <h2 id="subPageHeader">See what professors teach and what research the class can possibly lead into...</h2>
+  <hr class="headerSeperator" />
+  <form method="POST" action="/search/classes" id="researchForm">
+    <fieldset id="mainInfo" class="fieldsetPadding">
+        <legend class="researchLegend">Search via Class!</legend>
+        <div id="mainContent">
+          <label for="class_id" id="inputLabel">Department:</label>
+          <br />
+          <input type="text" name="class_id" id="researchInput" /> <br /><br />
+          
+          <label for="class_num" id="inputLabel">Class Code:</label>
+          <br />
+          <input type="text" name="class_num" id="researchInput"/> <br /><br />
+          <div id="flex">
+            <input type="submit" class="submitButton" />
+          </div>
+        </div>
+    </fieldset>
+  </form>
 
-  <label for="class_num" style="font-family: Roboto Black; float: left">Class Code</label>
-  <input type="text" name="class_num" style="float: right"/> <br /><br />
-  <input type="submit" class="submitButton" />
-</form>
+  <hr class="headerSeperator" />
+
+  <div id="classContext">
+    <p id="contextText">This search page allows users to search for professors by classes taught at UNCC. There are many different classes offered at the college that can lead into research oppurtunities at the school. Take for example ITSC 3181, Computer Architecture. This class can lead students to research Parallel Computing as computer architecture is fundamental to the study. By searching for various classes, users will be able to locate classes that offer research topic oppurtunities.</p>
+  </div>
+</div>
