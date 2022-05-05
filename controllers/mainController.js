@@ -6,6 +6,7 @@
 */
 
 const Professor = require("../model/professor.js")
+const Paper = require("../model/paper.js")
 const bcrypt = require("bcrypt")
 const scrapingFunctions = require("../model/scraping")
 const professorMapDataScraped = require("../public/data/googleMapData.json")
@@ -154,6 +155,14 @@ exports.getProfProfile = async (req, res) => {
   const { profId } = req.params
   let userId = req.session.account;
 
+  const prof = await Professor.findOne({ _id: profId })
+  const classes = await prof.getUniqueClasses()
+  const papers = await prof.getAuthoredPapers()
+
+  const profData = prof.toObject()
+  profData.classes = classes
+  profData.papers = papers
+
   //Determine if logged in or not.
   if(userId) {
     const userData = await User.findOne({ _id: userId })
@@ -183,14 +192,14 @@ exports.addReview = async(req, res) => {
   const newReview = req.body;
   let profId = req.params.profId;
   const profData = await Professor.findById(profId)
-  
+
   profData.reviews.push(newReview);
-  
+
   profData.save().then(() => {
     res.redirect(`/professor/${profId}`)
   }).catch(error => {
     console.log("An error has occurred when trying to save a review for this professor.");
   });
 
-  
+
 }
