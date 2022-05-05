@@ -10,6 +10,15 @@
     <div class="light-green card headlineItem">
       <p>{{profData.name}} - <a href={{profData.homePage}}>Homepage</a></p>
       <p>{{profData.department}}</p>
+      {{#if isFavorite}}
+        <form>
+          <button class="favButton" id="fav" type="submit" formmethod="POST" formaction="/user/removeFavorite/{{profData._id}}"><p>&#11088;</p></button>
+        </form>
+      {{else}}
+        <form>
+          <button class="favButton" id="noFav" type="submit" formmethod="POST" formaction="/user/addFavorite/{{profData._id}}"><p>&#10025;</p></button>
+        </form>
+      {{/if}}
       <p>Research in:
         {{#each profData.researchAreas}}
           {{this}}{{#unless @last}},{{/unless}}
@@ -23,25 +32,6 @@
 
     </div>
 
-    {{! <button class="button button1">
-        Contact Info
-      </button>
-      <button class="button button2">
-        Classes Taught
-      </button> }}
-    {{! <div class="profDescrip">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo
-      </p>
-    </div> }}
     <div>
       <h2>Classes</h2>
       {{#each profData.classes}}

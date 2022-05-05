@@ -90,3 +90,21 @@
 .light-blue {
     background-color: rgb(170, 221, 255);
 }
+
+.favButton {
+  background-color: var(--rmp-grey);
+  border: inherit;
+}
+
+.favButton:hover {
+  cursor: pointer;
+}
+
+#noFav {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+#fav {
+  font-size: 22px;
+}

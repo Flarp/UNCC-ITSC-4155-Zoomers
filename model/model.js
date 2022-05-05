@@ -37,7 +37,10 @@ const userSchema = new Schema({
     required: [true, "User's password to the account is required."],
   },
 
-  favorites: [String],
+  favorites: {
+    type: [Schema.Types.ObjectId],
+    ref: "professors",
+  }
 })
 
 //Reolace plaintext string from user with hash + salted string to store in dataase
@@ -48,7 +51,7 @@ userSchema.pre("save", function (next) {
 
   //If the password isnt being modified (Other field), then no issue
   if (!user.isModified("password")) {
-    return next
+    return next()
   } else {
     //Hash and salt the plaintext password
     bcrypt

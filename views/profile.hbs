@@ -1,5 +1,39 @@
+<head>
+  <link rel="stylesheet" href="/css/professorResult.css">
+</head>
+
+
 <div id="user-area">
   <h1>{{user.firstName}} {{user.lastName}}</h1>
   <p>{{user.username}}</p>
   <a href="/user/password">Change Password</a>
+</div>
+
+<div id="favoriteProfessors">
+{{#if professors}}
+  {{#each professors }}
+    <div id="professorContainer">
+      <hr class="headerSeperator" />
+      <div id="professorCard">
+        <a href="#"><img src="/img/canvas.png" width="200" height="200" alt="Professor Profile Picture" id="profProfilePic" /></a>
+        <div id="profText">
+          <h2 id="profName"><a href="/professor/{{ this._id }}">{{ this.professor }}</a></h2>
+          <ul>
+            {{#each this.researchAreas }}
+              <li>
+                <p id="researchText">{{ this }}</p>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+      <hr class="headerSeperator" />
+    </div>
+  {{/each}}
+{{ else }}
+  <h1>No Results Found</h1>
+  <p>
+    There are no results for the given search.
+  </p>
+{{/if}}
 </div>

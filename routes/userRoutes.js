@@ -26,4 +26,8 @@ router.get("/password", userMiddleware.isLoggedIn, userController.getPasswordRes
 
 router.post("/password", userMiddleware.isLoggedIn, userController.execPasswordReset)
 
+router.post("/addFavorite/:profId", userMiddleware.isLoggedIn, userController.addFavorite);
+
+router.post("/removeFavorite/:profId", userMiddleware.isLoggedIn, userController.removeFavorite);
+
 module.exports = router;

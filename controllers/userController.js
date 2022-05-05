@@ -1,4 +1,5 @@
 const User = require("../model/model.js")
+const Professor = require("../model/professor.js");
 
 //Get /user/register --> Grab register page
 exports.getRegister = (req, res) => {
@@ -69,8 +70,28 @@ exports.checkLogin = (req, res, next) => {
   });
 }
 
-exports.getProfile = (req, res) => {
-  res.render("profile", {user: req.user.toObject()})
+//Get the user's profile, provide session data, grab user in database to get professor favorites
+exports.getProfile = async (req, res) => {
+  try {
+    let userId = req.session.account;
+    const userInfo = await User.findById(userId)
+    const professors = [];
+
+    //Retrieve favorites field from DB query
+    const userFavsIds = userInfo.favorites;
+
+    //Iterate through all favorite professor IDs, and retrieve them from the database... add to the array passed to front end.
+    for(let i = 0; i < userFavsIds.length; i++) {
+      const profObject = await Professor.findOne({ _id: userFavsIds[i] });
+      professors.push(profObject);
+    }
+
+    //Render the profile with the user information and the professor favorite information
+    res.render("profile", {user: req.user.toObject(), professors: professors.map(professor => professor.toObject())})
+  } catch(error) {
+    req.flash("error", error.message);
+    res.redirect("back");
+  }
 }
 
 exports.logout = (req, res, next) => {
@@ -98,13 +119,59 @@ exports.execPasswordReset = (req, res, next) => {
       req.flash('success', 'Password successfully changed!')
       res.redirect("/user/profile")
     })
-    .catch(next)
+    .catch(error => {
+      req.flash("error", "Error resetting password.");
+      res.redirect("/user/profile");
+    });
+}
 
+//Locate a specific user in the database. Add the requested professor to their favorites list.
 exports.addFavorite = async (req, res) => {
-  const { userId, profId } = req.params
-  const userData = await User.findOne({ _id: userId }).lean()
-  userData.favorites.push(profId)
-  userData.save() // FIXME not sure if this is the right way to save to DB
+  try {
+    //Retrieve all needed information for queries.
+    let userId = req.session.account;
+    let profId = req.params.profId;
 
+    //Query the database for a user. Add the requested professor to the favorites array.
+    const userData = await User.findOne({ _id: userId })
+    userData.favorites.push(profId);
+
+    //Save the current iteration of the database back to mongo, redirect the user back to the professor page.
+    userData.save().then(() => {
+      res.redirect(`/professor/${profId}`)
+    }).catch(error => { //Error exception for mongo error when removing professor
+      req.flash("error", "An error has occurred when trying to favorite this professor.");
+      res.redirect("back");
+    });
+  } catch(error) { //Error exception for mongo error when querying for a user
+    req.flash("error", error.message);
+    res.redirect(`/professor/${profId}`)
+  }
+}
+
+//Locate a specific user in the database. Remove the requested professor from their favorites list.
+exports.removeFavorite = async (req, res) => {
+  try {
+    //Retrieve needed information for queries.
+    let userId = req.session.account;
+    let profId = req.params.profId;
+
+    //Query user database for user. Remove the requested professor from the array.
+    const userData = await User.findOne({ _id: userId });
+    
+    if(userData.favorites.includes(profId)) {
+      userData.favorites.splice(userData.favorites.indexOf(profId), 1);  
+    }
+  
+    //Save the current iteration of the database back to mongo, redirect user back to the professor page.
+    userData.save().then(() => {
+      res.redirect(`/professor/${profId}`)
+    }).catch(error => { //Error exception for mongo error when removing professor
+      req.flash("error", "An error has occurred when trying to remove this professor.");
+      res.redirect("back");
+    });
+  } catch(error) { //Error exception for mongo error when querying for a user
+    req.flash("error", error.message);
+    res.redirect(`/professor/${profId}`)
   }
 }
