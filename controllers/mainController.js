@@ -166,24 +166,16 @@ exports.getProfProfile = async (req, res) => {
   //Determine if logged in or not.
   if(userId) {
     const userData = await User.findOne({ _id: userId })
-    let isFavorite;
-    let userFavs = userData.favorites;
 
     //Check to see if current prof is a favorite. Set boolean, return to render.
-    if(userFavs.includes(profId)) {
-      isFavorite = true;
-    } else {
-      isFavorite = false;
-    }
+    const isFavorite = userData.favorites.includes(profId)
 
-    const profData = await Professor.findOne({ _id: profId }).lean()
     res.render("profProfile", { profData, isFavorite })
   }
   
   //Not logged in, proceed normally
   if(!userId) {
     let isFavorite = false;
-    const profData = await Professor.findOne({ _id: profId }).lean()
     res.render("profProfile", { profData, isFavorite })
   }
 }
