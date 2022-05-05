@@ -1,9 +1,13 @@
 const { default: mongoose } = require("mongoose")
+const Paper = require('./paper.js')
 
 const Class = new mongoose.Schema({
   dept: String,
   code: String,
   name: String,
+  days: [String],
+  time: [String],
+  section: String
 })
 
 const Research = new mongoose.Schema({
@@ -30,5 +34,21 @@ const ProfessorSchema = new mongoose.Schema({
   research: [Research],
   reviews: [Review],
 })
+
+ProfessorSchema.methods.getUniqueClasses = function() {
+  return mongoose.model('Professor')
+  .aggregate([
+    {$match: {_id: this._id}},
+    {$project: {classes: {section: 0}}},
+    {$unwind: "$classes"},
+    {$group: {_id: null, classes: {$addToSet: "$classes"}}},
+    {$unwind: "$classes"},
+    {$replaceRoot: { newRoot: "$classes" }}
+  ])
+}
+
+ProfessorSchema.methods.getAuthoredPapers = function() {
+  return Paper.find({creators: this.professor})
+}
 
 module.exports = new mongoose.model("Professor", ProfessorSchema)

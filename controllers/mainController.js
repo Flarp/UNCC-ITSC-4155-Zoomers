@@ -6,6 +6,7 @@
 */
 
 const Professor = require("../model/professor.js")
+const Paper = require("../model/paper.js")
 const bcrypt = require("bcrypt")
 const scrapingFunctions = require("../model/scraping")
 const professorMapDataScraped = require("../public/data/googleMapData.json")
@@ -151,7 +152,15 @@ exports.getMap = async (req, res) => {
 exports.getProfProfile = async (req, res) => {
   //console.log(req)
   const { profId } = req.params
-  const profData = await Professor.findOne({ _id: profId }).lean()
+  const prof = await Professor.findOne({ _id: profId })
+  const classes = await prof.getUniqueClasses()
+  const papers = await prof.getAuthoredPapers()
+
+  const profData = prof.toObject()
+  profData.classes = classes
+  profData.papers = papers
+
+  console.log(papers)
 
   res.render("profProfile", { profData })
 }
@@ -160,14 +169,14 @@ exports.addReview = async(req, res) => {
   const newReview = req.body;
   let profId = req.params.profId;
   const profData = await Professor.findById(profId)
-  
+
   profData.reviews.push(newReview);
-  
+
   profData.save().then(() => {
     res.redirect(`/professor/${profId}`)
   }).catch(error => {
     console.log("An error has occurred when trying to save a review for this professor.");
   });
 
-  
+
 }
