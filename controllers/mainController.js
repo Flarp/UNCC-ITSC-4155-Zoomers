@@ -160,8 +160,6 @@ exports.getProfProfile = async (req, res) => {
   profData.classes = classes
   profData.papers = papers
 
-  console.log(papers)
-
   res.render("profProfile", { profData })
 }
 

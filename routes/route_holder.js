@@ -26,7 +26,7 @@ mainRouter.get("/map", mainController.getMap)
 //Get /professor/:id --> Retrieve the profile of the professor
 mainRouter.get("/professor/:profId", mainController.getProfProfile)
 
-mainRouter.post("/professor/:profId", mainController.addReview)
+mainRouter.post("/professor/:profId", userMiddleware.isLoggedIn, mainController.addReview)
 
 //Provide the router to the app.js file
 module.exports = mainRouter
