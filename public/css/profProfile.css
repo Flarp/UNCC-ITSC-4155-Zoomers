@@ -57,20 +57,20 @@
   margin-right: 1rem;
 }
 
-#removeDefault {
+.removeDefault {
   color: white;
 }
 
-#removeDefault:link {
-  text-decoration: none;
+.removeDefault:link {
+  text-decoration: underline;
 }
 
-#removeDefault:visited {
-  text-decoration: none;
+.removeDefault:visited {
+  text-decoration: underline;
 }
 
-#removeDefault:active {
-  text-decoration: none;
+.removeDefault:active {
+  text-decoration: underline;
 }
 
 .headerSeperator {
@@ -93,4 +93,8 @@
 
 #width-100 {
   width: 100%;
+}
+
+.inline {
+  display: inline;
 }

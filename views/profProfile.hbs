@@ -12,7 +12,7 @@
           <img src="{{profData.image}}" width="300" height="300" />
         </div>
         <div id="profInformation">
-            <span id="textArea"><p>Name: {{profData.professor}}</p><p><a href={{profData.homePage}} id="removeDefault">Professor Homepage</a></p></span>
+            <span id="textArea"><p>Name: {{profData.professor}}</p><p><a href={{profData.homePage}} class="removeDefault">Professor Homepage</a></p></span>
             <p>Department: {{profData.department}}</p>
             {{#if isFavorite}}
               <form>
@@ -48,9 +48,11 @@
     </div>
 
     <h2>Classes Taught</h2>
+    
     <div id="centerSmall">
       <hr class="headerSeperator" />
       <div id="secondSection">
+        {{#if profData.hasClasses}}
         {{#each profData.classes}}
         <div id="row">
           <div id="width-100">
@@ -70,9 +72,66 @@
           </div> 
         </div>
         {{/each}}
+        {{else}}
+        <p class="pushOff">No data found.</p>
+        {{/if}}
       </div>
       <hr class="headerSeperator" />
     </div>
+    
+
+    <h2>Professor's Papers</h2>
+    
+    <div id="centerSmall">
+      <hr class="headerSeperator" />
+      <div id="secondSection">
+        {{#if profData.hasPapers}}
+        {{#each profData.papers}}
+        <div id="row">
+          <div id="width-100">
+            <h3 class="pushOff"><a class="removeDefault" href={{url}} target="_blank">{{title}}</a></h3>
+            <h4 class="pushOff">{{published}}</h4>
+            <div class="pushOff">
+              {{#each creators}}
+                <p class="inline">{{this}}{{#unless @last}}, {{/unless}}</p>
+              {{/each}}
+            </div>
+          </div> 
+        </div>
+        {{#unless @last}}<br><br>{{/unless}}
+        {{/each}}
+        {{else}}
+        <p class="pushOff">No data found.</p>
+        {{/if}}
+      </div>
+      <hr class="headerSeperator" />
+    </div>
+    
+
+    <h2>Professor's Funding</h2>
+    <div id="centerSmall">
+      <hr class="headerSeperator" />
+      <div id="secondSection">
+        {{#if profData.hasFunding}}
+        {{#each profData.research}}
+        <div id="row">
+          <div id="width-100">
+            <h3 class="pushOff">{{title}}</h3>
+            <h4 class="pushOff">{{sponsor}}, {{fiscalYear}}</h4>
+            <p class="pushOff">${{amount}}</p>
+            <p class="pushOff">{{beginDate}} - {{endDate}}</p>
+          </div> 
+        </div>
+        {{#unless @last}}<br><br>{{/unless}}
+        {{/each}}
+        {{else}}
+        <p class="pushOff">No data found.</p>
+        {{/if}}
+      </div>
+      <hr class="headerSeperator" />
+    </div>
+    
+
 
     <div id="thirdSection">
       <h2>Reviews</h2>
@@ -83,11 +142,24 @@
         <br>
         <input type="submit" class="light-yellow card" value="Add review" id="submitButton" />
       </form>
-      {{#each profData.reviews}}
-        <div class="light-yellow card">
-          <h3>{{title}}</h3>
-          <p>{{reviewText}}</p>
+      <div id="centerSmall">
+        <hr class="headerSeperator" />
+        <div id="secondSection">
+          {{#if hasReviews}}
+          {{#each profData.reviews}}
+          <div id="row">
+            <div id="width-100">
+              <h3 class="pushOff">{{title}}</h3>
+              <p class="pushOff">{{reviewText}}</p>
+            </div> 
+          </div>
+          {{#unless @last}}<br><br>{{/unless}}
+          {{/each}}
+          {{else}}
+          <p class="pushOff">This professor doesn't have any reviews yet.</p>
+          {{/if}}
         </div>
-      {{/each}}
+        <hr class="headerSeperator" />
+      </div>
     </div>
   </main>
