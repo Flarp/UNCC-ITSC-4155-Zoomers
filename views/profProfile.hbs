@@ -1,58 +1,80 @@
-<body>
+
   <head>
     <link rel="stylesheet" href="/css/profProfile.css" />
   </head>
   <main>
-
-    <div class="image">
-      <img src="{{profData.image}}" width="125" height="125" />
-    </div>
-    <div class="light-green card headlineItem">
-      <p>{{profData.name}} - <a href={{profData.homePage}}>Homepage</a></p>
-      <p>{{profData.department}}</p>
-      {{#if isFavorite}}
-        <form>
-          <button class="favButton" id="fav" type="submit" formmethod="POST" formaction="/user/removeFavorite/{{profData._id}}"><p>&#11088;</p></button>
-        </form>
-      {{else}}
-        <form>
-          <button class="favButton" id="noFav" type="submit" formmethod="POST" formaction="/user/addFavorite/{{profData._id}}"><p>&#10025;</p></button>
-        </form>
-      {{/if}}
-      <p>Research in:
-        {{#each profData.researchAreas}}
-          {{this}}{{#unless @last}},{{/unless}}
-        {{/each}}
-        - broadly,
-        {{#each profData.broadResearchAreas}}
-          {{this}}
-        {{/each}}
-      </p>
-      <a href="mailto:{{profData.email}}">{{profData.email}}</a>
-
-    </div>
-
-    <div>
-      <h2>Classes</h2>
-      {{#each profData.classes}}
-        <div class="light-blue card">
-          <h3>{{name}}</h3>
-          <h4>{{dept}} {{code}}</h4>
-          <p>
-            Taught
-            {{#unless days.length}}
-              virtually.
-            {{else}}
-              {{#each days}}
-                {{this}}{{#unless @last}}, {{/unless}}
-              {{/each}}
-              from {{time.[0]}} to {{time.[1]}}.
-            {{/unless}}
-          </p>
+    <h1 id="mainHeader">Professor Profile</h1>
+    <div id="center">
+      <hr class="headerSeperator" />
+      <div id="firstSection">
+        
+        <div class="image">
+          <img src="{{profData.image}}" width="300" height="300" />
         </div>
-      {{/each}}
+        <div id="profInformation">
+            <span id="textArea"><p>Name: {{profData.professor}}</p><p><a href={{profData.homePage}} id="removeDefault">Professor Homepage</a></p></span>
+            <p>Department: {{profData.department}}</p>
+            {{#if isFavorite}}
+              <form>
+                <button class="favButton" id="fav" type="submit" formmethod="POST" formaction="/user/removeFavorite/{{profData._id}}"><p><p id="fullStar">&#11088;</p>Remove Favorite?</p></button>
+              </form>
+            {{else}}
+              <form>
+                <button class="favButton" id="noFav" type="submit" formmethod="POST" formaction="/user/addFavorite/{{profData._id}}"><p><p id="emptyStar">&#10025;</p>Add Favorite?</p></button>
+              </form>
+            {{/if}}
+        </div>
+      
+        <div id="researchTopics">
+          Professor Research Topics:
+          <ul>
+            {{#each profData.researchAreas}}
+              <li>{{this}}{{#unless @last}},{{/unless}}</li>
+            {{/each}}
+            <br />
+          </ul>
+        </div>  
+        
+        <div id="broadResearchTopics">
+          Professor Broad Research Topics:
+          <ul>
+            {{#each profData.broadResearchAreas}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+      <hr class="headerSeperator" />
     </div>
-    <div>
+
+    <h2>Classes Taught</h2>
+    <div id="centerSmall">
+      <hr class="headerSeperator" />
+      <div id="secondSection">
+        {{#each profData.classes}}
+        <div id="row">
+          <div id="width-100">
+            <h3 class="pushOff">{{name}}</h3>
+            <h4 class="pushOff">{{dept}} {{code}}</h4>
+            <p class="pushOff">
+              Taught
+              {{#unless days.length}}
+                virtually.
+            
+              {{else}}
+                {{#each days}}
+                  {{this}}{{#unless @last}}, {{/unless}}
+                {{/each}}
+                from {{time.[0]}} to {{time.[1]}}.
+              {{/unless}}
+          </div> 
+        </div>
+        {{/each}}
+      </div>
+      <hr class="headerSeperator" />
+    </div>
+
+    <div id="thirdSection">
       <h2>Reviews</h2>
       <form id="review-form" class="light-green card" action="/professor/{{ profData._id }}" method="post">
         <input class="light-yellow card" name="title" type="text" id="title" placeholder="Review Title" />
@@ -69,4 +91,3 @@
       {{/each}}
     </div>
   </main>
-</body>
