@@ -48,7 +48,7 @@ ProfessorSchema.methods.getUniqueClasses = function() {
 }
 
 ProfessorSchema.methods.getAuthoredPapers = function() {
-  return Paper.find({creators: this.professor})
+  return Paper.find({creators: this.professor}).lean()
 }
 
 module.exports = new mongoose.model("Professor", ProfessorSchema)
