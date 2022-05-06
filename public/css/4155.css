@@ -107,9 +107,10 @@ hr {
 }
 
 #grantBreakdown {
-  margin-top: 2%;
   display: block;
-  margin-left: 110%;
+  /*margin-left: 110%;*/
+  background-color: var(--rmp-green);
+  color: white;
 }
 
 .barChart {
