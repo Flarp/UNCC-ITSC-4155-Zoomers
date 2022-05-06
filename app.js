@@ -27,7 +27,7 @@ const instance = hbs.create({
 const app = express()
 
 app.engine("hbs", instance.engine)
-const host = "localhost"
+const host = "0.0.0.0"
 let port = 3000
 app.set("view engine", "hbs")
 app.set("views", "./views")
