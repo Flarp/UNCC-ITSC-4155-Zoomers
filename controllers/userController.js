@@ -76,18 +76,26 @@ exports.getProfile = async (req, res) => {
     let userId = req.session.account;
     const userInfo = await User.findById(userId)
     const professors = [];
+    let profObject = {};
 
     //Retrieve favorites field from DB query
     const userFavsIds = userInfo.favorites;
 
     //Iterate through all favorite professor IDs, and retrieve them from the database... add to the array passed to front end.
     for(let i = 0; i < userFavsIds.length; i++) {
-      const profObject = await Professor.findOne({ _id: userFavsIds[i] });
+      let profData = await Professor.findOne({ _id: userFavsIds[i] });
+      let profPapers = await profData.getAuthoredPapers();
+      
+      profObject = profData.toObject();
+      profObject.papers = profPapers
+
       professors.push(profObject);
     }
+    
+    //console.log(professors)
 
     //Render the profile with the user information and the professor favorite information
-    res.render("profile", {user: req.user.toObject(), professors: professors.map(professor => professor.toObject())})
+    res.render("profile", {user: req.user.toObject(), professors})
   } catch(error) {
     req.flash("error", error.message);
     res.redirect("back");

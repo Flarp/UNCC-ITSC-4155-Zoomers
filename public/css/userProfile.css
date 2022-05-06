@@ -1,0 +1,120 @@
+/*
+
+    ITCS 4155 Group 3 - The Zoomers
+    CSS Styling for the user profile view
+    Date: April 13th
+
+*/
+
+#professorHeader {
+    text-align: center;
+}
+
+#professorContainer {
+    background-color: var(--rmp-green);
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-family: Roboto Thin;
+}
+
+.headerSeperator {
+    margin-bottom: 0;
+}
+
+#professorCard{
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#profText {
+    margin-left: 2rem;
+}
+
+#profName {
+    text-align: left;
+    text-decoration: underline;
+    font-size: 22px;   
+}
+
+#profName1 {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 22px;   
+}
+
+#profName > a {
+    color: white;
+}
+
+#researchText {
+    font-size: 20px;
+}
+
+.submitButton {
+    border: solid #dfc56e;
+    background-color: #dfc56e;
+    padding: 8px 80px;
+}
+
+.submitButton:hover {
+    cursor: pointer;
+    background-color: #c5a94d;
+    border: solid #c5a94d;
+}
+
+#buttonLink {
+    text-decoration: none;
+    color: black;
+}
+
+#homePageText {
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    text-decoration-color: white;
+    text-align: center;
+}
+
+#homePageText:hover {
+    border: 1px solid white;
+}
+
+#homePageText:hover {
+    text-decoration: none;
+}
+
+#removeDefault:link {
+    text-decoration: none;
+}
+
+#removeDefault:visited {
+    text-decoration: none;
+}
+
+#removeDefault:active {
+    text-decoration: none;
+}
+
+#user-area {
+    background-color: var(--rmp-green);
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1px;
+    color: white;
+    border-radius: 15px;
+    padding: 1rem;
+    text-align: center;
+}
+
+#userHeader {
+    text-align: center;
+}
+
+#cardHeader {
+    margin-top: 5px;
+}
