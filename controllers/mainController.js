@@ -10,7 +10,7 @@ const Paper = require("../model/paper.js")
 const bcrypt = require("bcrypt")
 const scrapingFunctions = require("../model/scraping")
 const professorMapDataScraped = require("../public/data/googleMapData.json")
-const User = require("../model/model");
+const User = require("../model/model")
 
 //Get / index page
 exports.index = async (req, res) => {
@@ -153,18 +153,35 @@ exports.getMap = async (req, res) => {
 exports.getProfProfile = async (req, res) => {
   //console.log(req)
   const { profId } = req.params
-  let userId = req.session.account;
+  let userId = req.session.account
 
   const prof = await Professor.findOne({ _id: profId })
   const classes = await prof.getUniqueClasses()
   const papers = await prof.getAuthoredPapers()
 
+  
+
+  for (i = 0; i < prof.research.length; i++) {
+    prof.research[i].beginDate = new Date(prof.research[i].beginDate).toLocaleDateString('en-US')
+    prof.research[i].endDate = new Date(prof.research[i].endDate).toLocaleDateString('en-US')
+  }
+
+  for (i = 0; i < papers.length; i++) {
+    papers[i].published = new Date(papers[i].published).toLocaleDateString('en-US')
+  }
+
   const profData = prof.toObject()
   profData.classes = classes
   profData.papers = papers
 
+  // booleans to check for classes, papers, funding, reviews
+  profData.hasClasses = classes.length > 0
+  profData.hasPapers = papers.length > 0
+  profData.hasFunding = prof.research.length > 0
+  profData.hasReviews = prof.reviews.length > 0
+
   //Determine if logged in or not.
-  if(userId) {
+  if (userId) {
     const userData = await User.findOne({ _id: userId })
 
     //Check to see if current prof is a favorite. Set boolean, return to render.
@@ -180,18 +197,21 @@ exports.getProfProfile = async (req, res) => {
   }
 }
 
-exports.addReview = async(req, res) => {
-  const newReview = req.body;
-  let profId = req.params.profId;
+exports.addReview = async (req, res) => {
+  const newReview = req.body
+  let profId = req.params.profId
   const profData = await Professor.findById(profId)
 
-  profData.reviews.push(newReview);
+  profData.reviews.push(newReview)
 
-  profData.save().then(() => {
-    res.redirect(`/professor/${profId}`)
-  }).catch(error => {
-    console.log("An error has occurred when trying to save a review for this professor.");
-  });
-
-
+  profData
+    .save()
+    .then(() => {
+      res.redirect(`/professor/${profId}`)
+    })
+    .catch((error) => {
+      console.log(
+        "An error has occurred when trying to save a review for this professor."
+      )
+    })
 }
