@@ -64,5 +64,5 @@ function initMap() {
 
 };
 
-initMap();
+window.onload = initMap;
 
