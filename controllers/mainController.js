@@ -185,13 +185,13 @@ exports.getProfProfile = async (req, res) => {
     //Check to see if current prof is a favorite. Set boolean, return to render.
     const isFavorite = userData.favorites.includes(profId)
 
-    res.render("profProfile", { profData, isFavorite })
+    res.render("profProfile", { profData, isFavorite, userId })
   }
 
   //Not logged in, proceed normally
-  if (!userId) {
-    let isFavorite = false
-    res.render("profProfile", { profData, isFavorite })
+  if(!userId) {
+    let isFavorite = false;
+    res.render("profProfile", { profData, isFavorite, userId: false })
   }
 }
 

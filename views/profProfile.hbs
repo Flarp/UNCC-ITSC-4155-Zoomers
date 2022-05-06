@@ -7,7 +7,7 @@
     <div id="center">
       <hr class="headerSeperator" />
       <div id="firstSection">
-        
+
         <div class="image">
           <img src="{{profData.image}}" width="300" height="300" />
         </div>
@@ -19,12 +19,14 @@
                 <button class="favButton" id="fav" type="submit" formmethod="POST" formaction="/user/removeFavorite/{{profData._id}}"><p><p id="fullStar">&#11088;</p>Remove Favorite?</p></button>
               </form>
             {{else}}
+              {{#if userId}}
               <form>
                 <button class="favButton" id="noFav" type="submit" formmethod="POST" formaction="/user/addFavorite/{{profData._id}}"><p><p id="emptyStar">&#10025;</p>Add Favorite?</p></button>
               </form>
+              {{/if}}
             {{/if}}
         </div>
-      
+
         <div id="researchTopics">
           Professor Research Topics:
           <ul>
@@ -33,8 +35,8 @@
             {{/each}}
             <br />
           </ul>
-        </div>  
-        
+        </div>
+
         <div id="broadResearchTopics">
           Professor Broad Research Topics:
           <ul>
@@ -62,14 +64,14 @@
               Taught
               {{#unless days.length}}
                 virtually.
-            
+
               {{else}}
                 {{#each days}}
                   {{this}}{{#unless @last}}, {{/unless}}
                 {{/each}}
                 from {{time.[0]}} to {{time.[1]}}.
               {{/unless}}
-          </div> 
+          </div>
         </div>
         {{/each}}
         {{else}}
