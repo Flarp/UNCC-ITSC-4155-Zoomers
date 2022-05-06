@@ -159,11 +159,7 @@ exports.getProfProfile = async (req, res) => {
   const classes = await prof.getUniqueClasses()
   const papers = await prof.getAuthoredPapers()
 
-  // booleans to check for classes, papers, funding, reviews
-  prof.hasClasses = classes.length > 0
-  prof.hasPapers = papers.length > 0
-  prof.hasFunding = prof.research.length > 0
-  prof.hasReviews = prof.reviews.length > 0
+  
 
   for (i = 0; i < prof.research.length; i++) {
     prof.research[i].beginDate = new Date(prof.research[i].beginDate).toLocaleDateString('en-US')
@@ -177,6 +173,12 @@ exports.getProfProfile = async (req, res) => {
   const profData = prof.toObject()
   profData.classes = classes
   profData.papers = papers
+
+  // booleans to check for classes, papers, funding, reviews
+  profData.hasClasses = classes.length > 0
+  profData.hasPapers = papers.length > 0
+  profData.hasFunding = prof.research.length > 0
+  profData.hasReviews = prof.reviews.length > 0
 
   //Determine if logged in or not.
   if (userId) {

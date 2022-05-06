@@ -12,7 +12,7 @@
           <img src="{{profData.image}}" width="300" height="300" />
         </div>
         <div id="profInformation">
-            <span id="textArea"><p>Name: {{profData.professor}}</p><p><a href={{profData.homePage}} class="removeDefault">Professor Homepage</a></p></span>
+            <span id="textArea"><p>Name: {{profData.professor}}</p><p><a href="{{profData.homePage}}" class="removeDefault">Professor Homepage</a></p></span>
             <p>Department: {{profData.department}}</p>
             {{#if isFavorite}}
               <form>
@@ -55,27 +55,27 @@
       <hr class="headerSeperator" />
       <div id="secondSection">
         {{#if profData.hasClasses}}
-        {{#each profData.classes}}
-        <div id="row">
-          <div id="width-100">
-            <h3 class="pushOff">{{name}}</h3>
-            <h4 class="pushOff">{{dept}} {{code}}</h4>
-            <p class="pushOff">
-              Taught
-              {{#unless days.length}}
-                virtually.
+          {{#each profData.classes}}
+            <div id="row">
+              <div id="width-100">
+                <h3 class="pushOff">{{name}}</h3>
+                <h4 class="pushOff">{{dept}} {{code}}</h4>
+                <p class="pushOff">
+                  Taught
+                  {{#unless days.length}}
+                    virtually.
 
-              {{else}}
-                {{#each days}}
-                  {{this}}{{#unless @last}}, {{/unless}}
-                {{/each}}
-                from {{time.[0]}} to {{time.[1]}}.
-              {{/unless}}
-          </div>
-        </div>
-        {{/each}}
+                  {{else}}
+                    {{#each days}}
+                      {{this}}{{#unless @last}}, {{/unless}}
+                    {{/each}}
+                    from {{time.[0]}} to {{time.[1]}}.
+                  {{/unless}}
+              </div>
+            </div>
+          {{/each}}
         {{else}}
-        <p class="pushOff">No data found.</p>
+          <p class="pushOff">No data found.</p>
         {{/if}}
       </div>
       <hr class="headerSeperator" />
@@ -133,35 +133,31 @@
       <hr class="headerSeperator" />
     </div>
     
-
-
-    <div id="thirdSection">
-      <h2>Reviews</h2>
-      <form id="review-form" class="light-green card" action="/professor/{{ profData._id }}" method="post">
-        <input class="light-yellow card" name="title" type="text" id="title" placeholder="Review Title" />
-        <br>
-        <textarea class="light-yellow card " name="reviewText" id="comment" placeholder="Review Text"></textarea>
-        <br>
-        <input type="submit" class="light-yellow card" value="Add review" id="submitButton" />
-      </form>
-      <div id="centerSmall">
-        <hr class="headerSeperator" />
-        <div id="secondSection">
-          {{#if hasReviews}}
-          {{#each profData.reviews}}
-          <div id="row">
-            <div id="width-100">
-              <h3 class="pushOff">{{title}}</h3>
-              <p class="pushOff">{{reviewText}}</p>
-            </div> 
-          </div>
-          {{#unless @last}}<br><br>{{/unless}}
-          {{/each}}
-          {{else}}
-          <p class="pushOff">This professor doesn't have any reviews yet.</p>
-          {{/if}}
+    <h2>Reviews</h2>
+    <form id="review-form" class="center-element" action="/professor/{{ profData._id }}" method="post">
+      <input class="title-input" name="title" type="text" id="title" placeholder="Review Title" />
+      <br>
+      <textarea class="text-input" name="reviewText" placeholder="Review Text" rows="3"></textarea>
+      <br>
+      <input type="submit" class="submitButton" value="Add review" id="submitButton" />
+    </form>
+    <div id="centerSmall">
+      <hr class="headerSeperator" />
+      <div id="secondSection">
+        {{#if profData.hasReviews}}
+        {{#each profData.reviews}}
+        <div id="row">
+          <div id="width-100">
+            <h3 class="pushOff">{{title}}</h3>
+            <p class="pushOff">{{reviewText}}</p>
+          </div> 
         </div>
-        <hr class="headerSeperator" />
+        {{#unless @last}}<br><br>{{/unless}}
+        {{/each}}
+        {{else}}
+        <p class="pushOff">This professor doesn't have any reviews yet.</p>
+        {{/if}}
       </div>
+      <hr class="headerSeperator" />
     </div>
   </main>

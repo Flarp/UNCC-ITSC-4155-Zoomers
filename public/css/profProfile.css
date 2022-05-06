@@ -98,3 +98,40 @@
 .inline {
   display: inline;
 }
+
+.submitButton {
+  border: solid #dfc56e;
+  background-color: #dfc56e;
+  padding: .6rem;
+  width: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+  background-color: #c5a94d;
+  border: solid #c5a94d;
+}
+
+#review-form {
+  margin-bottom: 10px;
+}
+
+.center-element {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+.title-input {
+  padding: .2rem;
+}
+
+.text-input {
+  padding: .2rem;
+}
