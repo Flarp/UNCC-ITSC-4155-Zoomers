@@ -84,7 +84,7 @@ exports.getProfile = async (req, res) => {
     //Iterate through all favorite professor IDs, and retrieve them from the database... add to the array passed to front end.
     for(let i = 0; i < userFavsIds.length; i++) {
       let profData = await Professor.findOne({ _id: userFavsIds[i] });
-      let profPapers = await profData.getAuthoredPapers();
+      let profPapers = await profData.getSampleAuthoredPapers();
       
       profObject = profData.toObject();
       profObject.papers = profPapers

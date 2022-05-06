@@ -26,7 +26,7 @@
           <a href="{{ this.homePage }}" id="removeDefault"><p id="homePageText">Professor's Website</p></a>
         </div>
         <div id="profText">
-          <h2 id="profName">Professor's Research Interests</h2>
+          <h2 id="profName">Professor's Interests</h2>
           <ul>
             {{#each this.researchAreas }}
               <li>
@@ -41,10 +41,11 @@
             <ul>
               {{#each this.papers }}
                 <li>
-                  <p id="researchText">{{ this }}</p>
+                  <p id="researchText">{{ this.title }}</p>
                 </li>
               {{/each}}
             </ul>
+            <a href="/professor/{{ this._id }}"><p class="moreInfo" id="homePageText">Click here for more information about this professor's published papers!</p></a>
           {{else}}
             <h2 id="profName1">Professor's Papers</h2>
             <p id="researchText1">Professor does not have any papers found within database.</p>

@@ -51,4 +51,8 @@ ProfessorSchema.methods.getAuthoredPapers = function() {
   return Paper.find({creators: this.professor}).lean()
 }
 
+ProfessorSchema.methods.getSampleAuthoredPapers = function() {
+  return Paper.find({creators: this.professor}).limit(5).lean()
+}
+
 module.exports = new mongoose.model("Professor", ProfessorSchema)
